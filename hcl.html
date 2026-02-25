@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Restaurant</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#f8f8f8;
+}
+
+/* Navbar */
+.navbar{
+background:#111;
+color:white;
+padding:15px 40px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+width:50px;
+height:50px;
+border-radius:50%;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+/* Hero */
+.hero{
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+url('https://images.unsplash.com/photo-1544025162-d76694265947');
+background-size:cover;
+height:300px;
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.btn{
+background:red;
+color:white;
+padding:10px 20px;
+border:none;
+cursor:pointer;
+font-size:16px;
+}
+
+/* Section */
+.section{
+padding:40px;
+text-align:center;
+}
+
+/* Form */
+form{
+background:white;
+padding:20px;
+max-width:500px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:30px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+<div class="logo">
+<img src="https://via.placeholder.com/100x100.png?text=LOGO" alt="Logo">
+<h2>My Restaurant</h2>
+</div>
+
+<div>
+<a href="#apply">Job Apply</a>
+<a href="#apply">Contact</a>
+</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Welcome To Our Restaurant</h1>
+<p>Best Food | Best Quality | Best Service</p>
+<button class="btn" onclick="scrollToApply()">Apply For Job</button>
+</div>
+
+<!-- JOB APPLY SECTION -->
+<div class="section" id="apply">
+<h2>Apply For Job Online</h2>
+
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+<input type="text" name="name" placeholder="Full Name" required>
+
+<input type="number" name="age" placeholder="Age" required>
+
+<select name="position">
+<option>Chef</option>
+<option>Assistant Chef</option>
+<option>Waiter</option>
+<option>Kitchen Helper</option>
+<option>Cleaner</option>
+</select>
+
+<input type="tel" name="phone" placeholder="Phone Number" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<button class="btn" type="submit">Submit Application</button>
+
+</form>
+
+</div>
+
+<footer>
+© 2026 My Restaurant | All Rights Reserved
+</footer>
+
+<script>
+
+function scrollToApply(){
+document.getElementById("apply").scrollIntoView({behavior:"smooth"});
+}
+
+</script>
+
+</body>
+</html>

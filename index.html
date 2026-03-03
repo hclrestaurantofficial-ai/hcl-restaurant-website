@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCl Restaurant Job Application</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://images.pexels.com/photos/349610/pexels-photo-349610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
+    background-size: cover;
+    padding: 20px;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255,255,255,0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+h1 { text-align: center; margin-bottom: 20px; }
+label { display: block; margin-top: 10px; font-weight: bold; }
+input, select, button {
+    width: 100%; padding: 10px; margin-top: 5px;
+}
+button { cursor: pointer; margin-top: 15px; }
+.form-step { display: none; }
+.form-step-active { display: block; }
+#progress-bar { width: 100%; height: 10px; background: #ddd; border-radius: 5px; margin-bottom: 20px; }
+#progress { height: 100%; width: 0%; background: #4caf50; border-radius: 5px; transition: width 0.3s;}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>HCl Restaurant Job Application</h1>
+
+<div id="progress-bar"><div id="progress"></div></div>
+
+<form id="jobForm" action="https://formspree.io/f/xykdozek" method="POST" enctype="multipart/form-data">
+
+<!-- Step 1: Personal Info -->
+<div class="form-step form-step-active">
+  <h2>Step 1: Personal Information</h2>
+
+  <label for="fullName">Full Name</label>
+  <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required>
+
+  <label for="fatherName">Father's Name</label>
+  <input type="text" id="fatherName" name="fatherName" placeholder="Enter father's name" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" placeholder="Enter email" required>
+
+  <label for="phone">Phone (+country code)</label>
+  <input type="tel" id="phone" name="phone" placeholder="+91 1234567890" required>
+
+  <label for="nationality">Nationality</label>
+  <input type="text" id="nationality" name="nationality" placeholder="Enter nationality" required>
+
+  <label for="idNumber">ID Number</label>
+  <input type="text" id="idNumber" name="idNumber" placeholder="Enter ID number" required>
+
+  <label for="dob">Date of Birth</label>
+  <input type="date" id="dob" name="dob" required>
+
+  <label for="country">Country</label>
+  <select id="country" name="country" required>
+    <option value="">Select Country</option>
+    <option value="🇵🇭 Philippines">🇵🇭 Philippines</option>
+    <option value="🇻🇳 Vietnam">🇻🇳 Vietnam</option>
+    <option value="🇹🇷 Turkey">🇹🇷 Turkey</option>
+    <option value="🇫🇷 France">🇫🇷 France</option>
+    <option value="🇮🇩 Indonesia">🇮🇩 Indonesia</option>
+    <option value="🇨🇳 China">🇨🇳 China</option>
+    <option value="🇵🇰 Pakistan">🇵🇰 Pakistan</option>
+    <option value="🇮🇳 India">🇮🇳 India</option>
+    <option value="🇮🇹 Italy">🇮🇹 Italy</option>
+    <option value="🇮🇹 Naples">🇮🇹 Naples</option>
+    <option value="🇹🇼 Taiwan">🇹🇼 Taiwan</option>
+    <option value="other">Other</option>
+  </select>
+  <input type="text" name="otherCountry" placeholder="Enter Country" style="display:none;">
+
+  <button type="button" class="next-btn">Next</button>
+</div>
+
+<!-- Step 2: Address -->
+<div class="form-step">
+  <h2>Step 2: Address</h2>
+
+  <label for="address">Home Address</label>
+  <input type="text" name="address" placeholder="Enter home address" required>
+
+  <label for="city">City</label>
+  <input type="text" name="city" placeholder="Enter city" required>
+
+  <label for="state">State / Province</label>
+  <input type="text" name="state" placeholder="Enter state / province" required>
+
+  <label for="postal">Postal Code</label>
+  <input type="text" name="postal" placeholder="Enter postal code" required>
+
+  <button type="button" class="prev-btn">Previous</button>
+  <button type="button" class="next-btn">Next</button>
+</div>
+
+<!-- Step 3: Education -->
+<div class="form-step">
+  <h2>Step 3: Education</h2>
+
+  <label for="qualification">Highest Qualification</label>
+  <select name="qualification" id="qualification" required>
+    <option value="">Select</option>
+    <option>High School</option>
+    <option>Bachelor</option>
+    <option>Master</option>
+    <option>PhD</option>
+    <option>Other</option>
+    <option value="No">No Education</option>
+  </select>
+
+  <label for="institute">Institute Name</label>
+  <input type="text" id="institute" name="institute" placeholder="Enter institute name">
+
+  <label for="passingYear">Passing Year</label>
+  <input type="number" id="passingYear" name="passingYear" placeholder="Enter passing year">
+
+  <label for="certificate">Upload Education Certificate (≤2MB)</label>
+  <input type="file" id="certificate" name="certificate" accept=".pdf,.jpg,.png">
+
+  <button type="button" class="prev-btn">Previous</button>
+  <button type="button" class="next-btn">Next</button>
+</div>
+
+<!-- Step 4: Work Experience -->
+<div class="form-step">
+  <h2>Step 4: Work Experience</h2>
+
+  <label for="company">Company Name</label>
+  <input type="text" id="company" name="company" placeholder="Enter company name">
+
+  <label for="jobTitle">Job Title</label>
+  <input type="text" id="jobTitle" name="jobTitle" placeholder="Enter job title">
+
+  <label for="location">Location</label>
+  <input type="text" id="location" name="location" placeholder="Enter location">
+
+  <label for="yearsExp">Years of Experience</label>
+  <input type="number" id="yearsExp" name="yearsExp" placeholder="Years">
+
+  <label for="monthsExp">Months of Experience</label>
+  <input type="number" id="monthsExp" name="monthsExp" placeholder="Months">
+
+  <label><input type="checkbox" id="noExperience"> No Experience</label>
+
+  <button type="button" class="prev-btn">Previous</button>
+  <button type="button" class="next-btn">Next</button>
+</div>
+
+<!-- Step 5: Job Position -->
+<div class="form-step">
+  <h2>Step 5: Job Position</h2>
+
+  <label for="jobPosition">Select Position</label>
+  <select id="jobPosition" name="jobPosition" required>
+    <option value="">Select</option>
+    <option>Chief</option>
+    <option>Cleaner</option>
+    <option>Crew Member</option>
+    <option>Dishwasher</option>
+    <option>Assistant Manager</option>
+    <option>Supervisor</option>
+    <option>Office Worker</option>
+    <option>CEO Assistant</option>
+    <option>Reception</option>
+    <option>Master Chef</option>
+    <option>Waiter</option>
+    <option>Food Management Assistant</option>
+  </select>
+
+  <button type="button" class="prev-btn">Previous</button>
+  <button type="button" class="next-btn">Next</button>
+</div>
+
+<!-- Step 6: Passport -->
+<div class="form-step">
+  <h2>Step 6: Passport</h2>
+
+  <label for="passportNumber">Passport Number</label>
+  <input type="text" id="passportNumber" name="passportNumber" placeholder="Enter passport number">
+
+  <label for="dateIssue">Date of Issue</label>
+  <input type="date" id="dateIssue" name="dateIssue">
+
+  <label for="dateExpiry">Date of Expiry</label>
+  <input type="date" id="dateExpiry" name="dateExpiry">
+
+  <label><input type="checkbox" id="noPassport"> No Passport</label>
+
+  <button type="button" class="prev-btn">Previous</button>
+  <button type="button" class="next-btn">Next</button>
+</div>
+
+<!-- Step 7: Upload Documents -->
+<div class="form-step">
+  <h2>Step 7: Upload Documents</h2>
+
+  <label for="cv">Upload CV (≤2MB)</label>
+  <input type="file" id="cv" name="cv" accept=".pdf,.jpg,.png" required>
+
+  <label for="picture">Upload Picture (≤2MB)</label>
+  <input type="file" id="picture" name="picture" accept=".jpg,.png" required>
+
+  <button type="button" class="prev-btn">Previous</button>
+  <button type="button" class="next-btn">Next</button>
+</div>
+
+<!-- Step 8: Review & Submit -->
+<div class="form-step">
+  <h2>Step 8: Review & Submit</h2>
+  <p>Click Submit to send your application.</p>
+
+  <button type="button" class="prev-btn">Previous</button>
+  <button type="submit">Submit Application</button>
+</div>
+
+</form>
+</div>
+
+<script>
+// Navigation
+const form=document.getElementById('jobForm');
+const steps=document.querySelectorAll('.form-step');
+const nextBtns=document.querySelectorAll('.next-btn');
+const prevBtns=document.querySelectorAll('.prev-btn');
+const progress=document.getElementById('progress');
+let currentStep=0;
+function updateProgress(){progress.style.width=((currentStep+1)/steps.length)*100+'%';}
+nextBtns.forEach(btn=>btn.addEventListener('click',()=>{
+  if(!validateStep()) return;
+  steps[currentStep].classList.remove('form-step-active');
+  currentStep++;
+  steps[currentStep].classList.add('form-step-active');
+  updateProgress();
+}));
+prevBtns.forEach(btn=>btn.addEventListener('click',()=>{
+  steps[currentStep].classList.remove('form-step-active');
+  currentStep--;
+  steps[currentStep].classList.add('form-step-active');
+  updateProgress();
+}));
+
+// Conditional fields
+const countrySelect=form.querySelector('select[name="country"]');
+const otherCountry=form.querySelector('input[name="otherCountry"]');
+countrySelect.addEventListener('change',()=>{otherCountry.style.display=countrySelect.value==='other'?'block':'none';});
+
+const qualification=document.getElementById('qualification');
+const institute=document.getElementById('institute');
+const passingYear=document.getElementById('passingYear');
+const certificate=document.getElementById('certificate');
+qualification.addEventListener('change',()=>{const isNo=qualification.value==='No'; institute.style.display=passingYear.style.display=certificate.style.display=isNo?'none':'block';});
+
+document.getElementById('noExperience').addEventListener('change',e=>{['company','jobTitle','location','yearsExp','monthsExp'].forEach(id=>document.getElementById(id).disabled=e.target.checked);});
+document.getElementById('noPassport').addEventListener('change',e=>{['passportNumber','dateIssue','dateExpiry'].forEach(id=>document.getElementById(id).disabled=e.target.checked);});
+
+// File size validation
+function validateFileSize(id){const f=document.getElementById(id); if(f.files[0]&&f.files[0].size>2*1024*1024){alert('File must be ≤2MB'); return false;} return true;}
+function validateStep(){const inputs=steps[currentStep].querySelectorAll('input,select'); for(let i of inputs){if(i.hasAttribute('required')&&!i.value){alert('Fill required fields'); return false;} if(['certificate','cv','picture'].includes(i.id)){if(!validateFileSize(i.id)) return false;}} return true;}
+
+// Form submit with Formspree + redirect
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!validateStep()) return;
+  const formData=new FormData(form);
+  fetch(form.action,{method:form.method,body:formData,headers:{'Accept':'application/json'}})
+    .then(response=>{if(response.ok){window.location.href='thankyou.html';} else {alert('Oops! There was a problem submitting your form.');}})
+    .catch(error=>{alert('Oops! There was a problem submitting your form.')});
+});
+</script>
+
+</body>
+  </html>

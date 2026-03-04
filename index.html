@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HCL Restaurant - Job Status Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { margin:0; font-family:Arial; background:linear-gradient(135deg,#0f2027,#203a43,#2c5364); display:flex; justify-content:center; align-items:center; height:100vh; color:white; }
+    .card { background: rgba(255,255,255,0.1); padding:30px; border-radius:15px; backdrop-filter:blur(15px); width:420px; text-align:center; box-shadow:0 0 25px rgba(0,0,0,0.4); }
+    input, button { width:100%; padding:10px; margin:10px 0; border-radius:5px; border:none; }
+    button { background:#ff9800; color:white; font-weight:bold; cursor:pointer; }
+    button:hover { background:#e68900; }
+    .progress-container { margin-top:20px; text-align:left; }
+    .step { padding:8px; margin:5px 0; border-radius:5px; background:rgba(255,255,255,0.15); transition:0.3s; }
+    .active { background:#4caf50; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>HCL Restaurant</h2>
+  <p>Track Your Job Application</p>
+
+  <input type="email" id="email" placeholder="Enter Email">
+  <input type="date" id="dob">
+  <button onclick="checkStatus()">Check Status</button>
+
+  <div class="progress-container" id="progress"></div>
+</div>
+
+<script>
+const { createClient } = supabase;
+const supabaseClient = createClient(
+  "https://vcaqgvcdttzzkkpziyiw.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZjYXFndmNkdHR6emtrcHppeWl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MTI4MzcsImV4cCI6MjA4ODA4ODgzN30.zKZPeTk62F7a54-_HMxyMY37krrMS6bFadjoyGW8zLM"
+);
+
+const steps = ["CV Received","Pending Approval","Manager Review","Interview","Test","Offer Letter","Visa Processing"];
+
+function showProgress(status) {
+  const progressDiv = document.getElementById("progress");
+  progressDiv.innerHTML = "";
+  const currentIndex = steps.indexOf(status);
+  steps.forEach((step,index)=>{
+    const div = document.createElement("div");
+    div.className="step";
+    div.innerText=step;
+    if(index<=currentIndex) div.classList.add("active");
+    progressDiv.appendChild(div);
+  });
+}
+
+async function checkStatus() {
+  const email = document.getElementById("email").value.trim().toLowerCase();
+  const dob = document.getElementById("dob").value;
+
+  const { data, error } = await supabaseClient
+    .from("applications")
+    .select("*")
+    .eq("email", email);
+
+  if(data && data.length>0){
+    const dbDob = new Date(data[0].dob).toISOString().split("T")[0];
+    if(dbDob===dob){
+      showProgress(data[0].status);
+    } else {
+      document.getElementById("progress").innerHTML="<p>Date of Birth does not match</p>";
+    }
+  } else {
+    document.getElementById("progress").innerHTML="<p>Email not found</p>";
+  }
+}
+</script>
+
+</body>
+</html>

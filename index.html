@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCl Restaurant Official</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
+html{scroll-behavior:smooth;}
+body{color:white;background-size:cover;background-position:center;transition:1s;}
+.overlay{background:rgba(0,0,0,0.8);min-height:100vh;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 40px;background:black;position:fixed;width:100%;top:0;z-index:1000;}
+nav h2{color:gold;}
+nav ul{display:flex;list-style:none;}
+nav ul li{margin-left:20px;cursor:pointer;}
+nav ul li:hover{color:gold;}
+section{padding:120px 20px 60px;}
+.container{max-width:1200px;margin:auto;background:rgba(0,0,0,0.75);padding:25px;border-radius:10px;}
+h1,h2,h3{color:gold;text-align:center;margin-bottom:15px;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;}
+.menu-item img{width:100%;border-radius:10px;}
+input,select,textarea{width:100%;padding:10px;margin:8px 0;border:none;border-radius:5px;}
+button{padding:10px 20px;background:gold;border:none;cursor:pointer;margin-top:10px;}
+.step{display:none;}
+.step.active{display:block;}
+.nav-buttons{display:flex;justify-content:space-between;}
+.notice{background:#222;padding:10px;margin-top:10px;border-left:5px solid gold;}
+footer{text-align:center;padding:20px;background:black;margin-top:40px;}
+</style>
+</head>
+<body>
+
+<div class="overlay">
+
+<nav>
+<h2>HCl Restaurant</h2>
+<ul>
+<li onclick="scrollToSection('welcome')">Welcome</li>
+<li onclick="scrollToSection('home')">Home</li>
+<li onclick="scrollToSection('about')">About</li>
+<li onclick="scrollToSection('menu')">Menu</li>
+<li onclick="scrollToSection('careers')">Careers</li>
+<li onclick="scrollToSection('contact')">Contact</li>
+</ul>
+</nav>
+
+<!-- WELCOME PAGE -->
+<section id="welcome">
+<div class="container">
+<h1>Welcome to HCl Restaurant</h1>
+<p style="text-align:center;">Experience authentic Italian cuisine and world-class service.</p>
+</div>
+</section>
+
+<!-- HOME -->
+<section id="home">
+<div class="container">
+<h1>Our Restaurant & Staff</h1>
+<div class="menu-grid">
+<img src="https://images.unsplash.com/photo-1601924582975-7e62b6e2d0b0">
+<img src="https://images.unsplash.com/photo-1589307004394-57a84a7a7c0b">
+<img src="https://images.unsplash.com/photo-1604908176997-4318c43bff91">
+<img src="https://images.unsplash.com/photo-1613145993486-8c1fa6c4f1b3">
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+<h1>About Us</h1>
+<p>HCl Restaurant is a premium Italian fine dining restaurant delivering authentic cuisine with professional Italian chefs and staff. Our mission is to provide exceptional taste, hygiene, and international career opportunities in the hospitality industry.</p>
+</div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+<div class="container">
+<h1>Our Menu</h1>
+<div class="menu-grid">
+<!-- 15 dishes -->
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1601924582975-7e62b6e2d0b0"><h3>Margherita Pizza</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1589307004394-57a84a7a7c0b"><h3>Spaghetti Carbonara</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1604908176997-4318c43bff91"><h3>Lasagna</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1613145993486-8c1fa6c4f1b3"><h3>Tiramisu</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f"><h3>Fettuccine Alfredo</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1571091718767-18d22e59f23e"><h3>Risotto</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1525755662778-989d0524087e"><h3>Bruschetta</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1543332164-4cb16c4c92de"><h3>Caprese Salad</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2"><h3>Panna Cotta</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"><h3>Pizza Quattro Formaggi</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1571046811050-3c5cba688c11"><h3>Gnocchi</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c"><h3>Ravioli</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1608756197773-478c9a7e8bcd"><h3>Lasagne Bolognese</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1608139556993-7120c5f91812"><h3>Pasta Arrabiata</h3></div>
+<div class="menu-item"><img src="https://images.unsplash.com/photo-1606222737365-8cf13e2b8ed0"><h3>Seafood Linguine</h3></div>
+</div>
+</div>
+</section>
+
+<!-- CAREERS -->
+<section id="careers">
+<div class="container">
+<h1>Careers - Apply Now</h1>
+<form action="https://formspree.io/f/xykdozek" method="POST">
+
+<!-- STEP 1: Personal Info -->
+<div class="step active">
+<h3>Personal Information</h3>
+<input type="text" name="Full Name" placeholder="Full Name" required>
+<input type="text" name="Father Name" placeholder="Father Name">
+<input type="date" name="Date of Birth">
+<input type="text" name="CNIC">
+<select name="Gender"><option>Male</option><option>Female</option><option>Other</option></select>
+<select name="Marital Status"><option>Single</option><option>Married</option><option>Other</option></select>
+<button type="button" onclick="nextStep()">Next</button>
+</div>
+
+<!-- STEP 2: Contact -->
+<div class="step">
+<h3>Contact Information</h3>
+<input id="phone" type="tel" name="Phone" required>
+<input type="email" name="Email" placeholder="Email Address" required>
+<select name="Country" onchange="showOtherCountry(this)" required>
+<option value="">🌍 Select Country</option>
+<option>🇵🇭 Philippines</option>
+<option>🇻🇳 Vietnam</option>
+<option>🇹🇷 Turkey</option>
+<option>🇮🇩 Indonesia</option>
+<option>🇨🇳 China</option>
+<option>🇦🇺 Australia</option>
+<option>🇦🇹 Austria</option>
+<option>🇹🇭 Thailand</option>
+<option>🇵🇹 Portugal</option>
+<option>Other</option>
+</select>
+<input type="text" id="otherCountry" name="Other Country" placeholder="Write Country Name" style="display:none;">
+<div class="nav-buttons"><button type="button" onclick="prevStep()">Back</button><button type="button" onclick="nextStep()">Next</button></div>
+</div>
+
+<!-- STEP 3: Passport -->
+<div class="step">
+<h3>Passport Details</h3>
+<select onchange="togglePassport(this)"><option value="No">No Passport</option><option value="Yes">Yes</option></select>
+<div id="passportFields" style="display:none;">
+<input type="text" name="Passport Number" placeholder="Passport Number">
+<input type="date" name="Issue Date">
+<input type="date" name="Expiry Date">
+</div>
+<div class="nav-buttons"><button type="button" onclick="prevStep()">Back</button><button type="button" onclick="nextStep()">Next</button></div>
+</div>
+
+<!-- STEP 4: Position & Education -->
+<div class="step">
+<h3>Position & Education</h3>
+<select name="Position">
+<option>Chef</option><option>Cleaner</option><option>Crew Member</option><option>Dish Washer</option>
+<option>Assistant Manager</option><option>Supervisor</option><option>Office Worker</option><option>Waiter</option>
+<option>Assistant CEO</option><option>Master Chef</option><option>Food Management Assistant</option>
+<option>Shift Head</option><option>Morning Shift</option><option>Night Shift</option>
+<option>All Positions</option>
+</select>
+<select name="Education">
+<option>No Education</option><option>High School</option><option>Bachelor</option><option>Master</option>
+<option>PhD</option><option>Other</option>
+</select>
+<input type="text" name="Institute Name" placeholder="Institute Name">
+<input type="text" name="Passing Year" placeholder="Passing Year">
+<input type="text" name="Grade" placeholder="Grade / Percentage">
+<div class="nav-buttons"><button type="button" onclick="prevStep()">Back</button><button type="button" onclick="nextStep()">Next</button></div>
+</div>
+
+<!-- STEP 5: Work Experience -->
+<div class="step">
+<h3>Work Experience</h3>
+<select onchange="toggleExperience(this)"><option value="No">No Experience</option><option value="Yes">Yes</option></select>
+<div id="experienceFields" style="display:none;">
+<input type="text" name="Company Name" placeholder="Company Name">
+<input type="text" name="Job Role" placeholder="Job Role">
+<input type="text" name="Duration" placeholder="Duration">
+<input type="text" name="Reason for Leaving" placeholder="Reason for Leaving">
+</div>
+<div class="nav-buttons"><button type="button" onclick="prevStep()">Back</button><button type="button" onclick="nextStep()">Next</button></div>
+</div>
+
+<!-- STEP 6: Language & Declaration -->
+<div class="step">
+<h3>Language & Declaration</h3>
+<select name="Language"><option>German</option><option>English</option><option>Other</option></select>
+<div class="notice">Please send your CV & Picture to:<br><b>hclrestaurantofficial@gmail.com</b></div>
+<label><input type="checkbox" required> I confirm that the information provided is correct.</label>
+<input type="text" name="Signature" placeholder="Type Full Name as Signature" required>
+<div class="nav-buttons"><button type="button" onclick="prevStep()">Back</button><button type="submit">Submit Application</button></div>
+</div>
+
+</form>
+</section>
+
+<section id="contact">
+<div class="container">
+<h1>Contact Us</h1>
+<p>Email: hclrestaurantofficial@gmail.com</p>
+</div>
+</section>
+
+<footer>© 2026 HCl Restaurant - All Rights Reserved</footer>
+</div>
+
+<script>
+function scrollToSection(id){document.getElementById(id).scrollIntoView();}
+let currentStep=0;
+const steps=document.querySelectorAll(".step");
+function showStep(i){steps.forEach((s,index)=>{s.classList.remove("active");if(index===i)s.classList.add("active");});}
+function nextStep(){if(currentStep<steps.length-1){currentStep++;showStep(currentStep);}}
+function prevStep(){if(currentStep>0){currentStep--;showStep(currentStep);}}
+function togglePassport(select){document.getElementById("passportFields").style.display=select.value==="Yes"?"block":"none";}
+function toggleExperience(select){document.getElementById("experienceFields").style.display=select.value==="Yes"?"block":"none";}
+function showOtherCountry(select){document.getElementById("otherCountry").style.display=select.value==="Other"?"block":"none";}
+
+/* Background slider */
+const backgrounds=[
+"url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0')",
+"url('https://images.unsplash.com/photo-1555992336-03a23c97e4a6')",
+"url('https://images.unsplash.com/photo-1504674900247-0877df9cc836')"
+];
+let bgIndex=0;
+function changeBackground(){document.body.style.backgroundImage=backgrounds[bgIndex];bgIndex=(bgIndex+1)%backgrounds.length;}
+setInterval(changeBackground,5000);
+changeBackground();
+
+/* Phone auto country code */
+const phoneInput=document.querySelector("#phone");
+window.intlTelInput(phoneInput,{initialCountry:"auto",geoIpLookup:function(callback){fetch("https://ipapi.co/json").then(r=>r.json()).then(d=>callback(d.country_code)).catch(()=>callback("US"));},utilsScript:"https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"});
+</script>
+
+</body>
+</html>

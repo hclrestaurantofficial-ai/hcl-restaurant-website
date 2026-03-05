@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCl Restaurant - Application Tracking</title>
+<style>
+body{font-family:Arial;background:#111;color:#fff;text-align:center;padding:50px;}
+h1{color:gold;}
+input{padding:10px;width:70%;border-radius:5px;border:none;margin:10px 0;}
+button{padding:10px 20px;background:gold;border:none;color:#000;cursor:pointer;}
+.steps{margin-top:30px;text-align:left;max-width:400px;margin-left:auto;margin-right:auto;}
+.step{padding:10px;border-left:5px solid #555;margin:10px 0;background:#222;border-radius:5px;}
+.step.active{border-left-color:gold;background:#333;font-weight:bold;}
+</style>
+</head>
+<body>
+
+<h1>HCl Restaurant - Application Tracking</h1>
+<p>Enter your email to check status:</p>
+<input type="email" id="email" placeholder="your@email.com">
+<button onclick="checkStatus()">Check Status</button>
+
+<div class="steps" id="stepsContainer" style="display:none;">
+<div class="step" id="s1">CV Received</div>
+<div class="step" id="s2">Manager Review</div>
+<div class="step" id="s3">Pending Interview</div>
+<div class="step" id="s4">Test</div>
+<div class="step" id="s5">Approved</div>
+<div class="step" id="s6">Offer Letter</div>
+<div class="step" id="s7">Visa Processing</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+const supabaseUrl = "https://xbmpynnvmtcsjnsclejd.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhibXB5bm52bXRjc2NsZWpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI2OTgzODAsImV4cCI6MjA4ODI3NDM4MH0.0a1_NBTacD2-onBEnrdHfKXbSp-AWSZca6JSvn-SzS8";
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+async function checkStatus(){
+    const email = document.getElementById("email").value.trim();
+    if(!email){ alert("Please enter your email"); return; }
+
+    try{
+        const { data, error } = await supabase
+        .from("application_status")
+        .select("*")
+        .eq("email", email);
+
+        if(error){
+            console.log(error);
+            alert("Error fetching status: " + error.message);
+            return;
+        }
+
+        if(data.length === 0){
+            alert("No application found for this email");
+            document.getElementById("stepsContainer").style.display="none";
+            return;
+        }
+
+        document.getElementById("stepsContainer").style.display="block";
+        const steps = ["s1","s2","s3","s4","s5","s6","s7"];
+        steps.forEach(id=>document.getElementById(id).classList.remove("active"));
+
+        const status = data[0].status;
+        const statusOrder = {
+            "CV Received":0,
+            "Manager Review":1,
+            "Pending Interview":2,
+            "Test":3,
+            "Approved":4,
+            "Offer Letter":5,
+            "Visa Processing":6
+        };
+        const index = statusOrder[status] !== undefined ? statusOrder[status] : 0;
+        for(let i=0;i<=index;i++){ document.getElementById(steps[i]).classList.add("active"); }
+
+    } catch(err){
+        console.log(err);
+        alert("Error connecting to Supabase");
+    }
+}
+</script>
+</body>
+</html>

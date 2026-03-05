@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCl Restaurant - About</title>
+<style>
+body{
+    margin:0;
+    font-family: 'Georgia', serif;
+    color:white;
+    background:#111;
+}
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    background:black;
+    display:flex;
+    justify-content:space-between;
+    padding:15px;
+    z-index:100;
+}
+nav h2{color:gold;}
+nav ul{display:flex;list-style:none;}
+nav ul li{margin-left:20px;}
+nav ul li a{color:white;text-decoration:none;}
+nav ul li a:hover{color:gold;}
+.hero{
+    background:url('https://images.unsplash.com/photo-1601924582975-7e62b6e2d0b0') center/cover no-repeat;
+    height:400px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+.hero h1{
+    color:gold;
+    font-size:50px;
+    text-shadow:2px 2px 8px #000;
+}
+.container{
+    max-width:1200px;
+    margin:20px auto;
+    padding:20px;
+}
+.container h2.section-title{
+    color:gold;
+    margin-bottom:15px;
+    margin-top:40px;
+    text-align:left;
+}
+.container p{
+    font-size:18px;
+    line-height:1.6;
+    text-align:justify;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+.grid img{
+    width:100%;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+.grid img:hover{
+    transform:scale(1.05);
+}
+.grid p{
+    text-align:center;
+    margin-top:5px;
+    font-weight:bold;
+}
+.footer{
+    background:black;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    border-top:1px solid gold;
+}
+.footer p{
+    margin:5px;
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+<h2>HCl Restaurant</h2>
+<ul>
+<li><a href="index.html">Welcome</a></li>
+<li><a href="home.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="menu.html">Menu</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero">
+<h1>HCl Restaurant, Rome – Authentic Italian Dining</h1>
+</div>
+
+<div class="container">
+<!-- About Description -->
+<h2 class="section-title">About Us</h2>
+<p>HCl Restaurant, located in the heart of Rome, Italy, offers a world-class Italian dining experience. Our chefs bring authentic flavors with an international touch, combining culinary traditions of Italy, France, Germany, China, Austria, Spain, and Poland. Every dish is crafted with passion and precision, served in a luxurious ambience. Enjoy our exquisite menu, attentive staff, and unforgettable dining atmosphere.</p>
+
+<!-- Dishes / International Cuisine -->
+<h2 class="section-title">Our Global Cuisine</h2>
+<div class="grid">
+<div><img src="https://images.unsplash.com/photo-1601924582975-7e62b6e2d0b0" alt="Pizza Margherita"><p>Italy - Pizza Margherita</p></div>
+<div><img src="https://images.unsplash.com/photo-1589307004394-57a84a7a7c0b" alt="Croissant"><p>France - Croissant</p></div>
+<div><img src="https://images.unsplash.com/photo-1604908176997-4318c43bff91" alt="Dim Sum"><p>China - Dim Sum</p></div>
+<div><img src="https://images.unsplash.com/photo-1613145993486-8c1fa6c4f1b3" alt="Pretzel"><p>Germany - Pretzel</p></div>
+<div><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" alt="Paella"><p>Spain - Paella</p></div>
+<div><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4" alt="Austrian Salad"><p>Austria - Salad</p></div>
+<div><img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507" alt="Pierogi"><p>Poland - Pierogi</p></div>
+<div><img src="https://images.unsplash.com/photo-1606222737365-8cf13e2b8ed0" alt="Lasagna"><p>Italy - Lasagna</p></div>
+</div>
+
+<!-- Staff Highlight -->
+<h2 class="section-title">Meet Our Professional Staff</h2>
+<div class="grid">
+<div><img src="https://images.unsplash.com/photo-1543353071-873f17a7a088" alt="Chef Mario"><p>Chef Mario</p></div>
+<div><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2" alt="Manager Anna"><p>Manager Anna</p></div>
+<div><img src="https://images.unsplash.com/photo-1544716278-f7e15b0f3a70" alt="Head Waiter Luca"><p>Head Waiter Luca</p></div>
+<div><img src="https://images.unsplash.com/photo-1581091215363-4e2fcbf46a68" alt="Assistant Chef Rosa"><p>Assistant Chef Rosa</p></div>
+<div><img src="https://images.unsplash.com/photo-1588702547923-7093a6c3ba33" alt="Sommelier Fabio"><p>Sommelier Fabio</p></div>
+<div><img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507" alt="Receptionist Julia"><p>Receptionist Julia</p></div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<p>📍 Via Roma 12, Rome, Italy</p>
+<p>📧 hclrestaurantofficial@gmail.com</p>
+<p>🌐 Follow us: Instagram | Facebook | Twitter</p>
+</div>
+
+</body>
+  </html>

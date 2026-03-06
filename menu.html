@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCL Restaurant Menu</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f4f4;}
+header{display:flex;justify-content:space-between;align-items:center;background:#111;color:white;padding:15px 40px;position:sticky;top:0;z-index:100;}
+.logo{font-size:24px;font-weight:bold;}
+nav a{color:white;margin:0 15px;text-decoration:none;font-weight:bold;}
+nav a:hover{color:orange;}
+.search{margin:20px;text-align:center;}
+.search input{padding:10px;width:300px;font-size:16px;border-radius:5px;border:1px solid #ccc;}
+.filter-buttons{text-align:center;margin:20px;}
+.filter-buttons button{margin:5px;padding:8px 15px;border:none;border-radius:5px;background:#e63946;color:white;cursor:pointer;}
+.filter-buttons button:hover{background:#c1121f;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;padding:20px 8%;}
+.card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,0.1);position:relative;}
+.card img{width:100%;height:180px;object-fit:cover;}
+.card h3{margin:10px;}
+.price{color:#e63946;font-weight:bold;margin:0 10px 10px;}
+button.add-cart{position:absolute;bottom:10px;right:10px;padding:6px 12px;background:#0077b6;color:white;border:none;border-radius:5px;cursor:pointer;}
+button.add-cart:hover{background:#023e8a;}
+footer{background:#111;color:white;text-align:center;padding:20px;margin-top:40px;}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">HCL Restaurant</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="menu.html">Menu</a>
+<a href="careers.html">Careers</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<div class="search">
+<input type="text" id="searchInput" placeholder="Search food..." onkeyup="searchFood()">
+</div>
+
+<div class="filter-buttons">
+<button onclick="filterCategory('all')">All</button>
+<button onclick="filterCategory('italian')">Italian</button>
+<button onclick="filterCategory('french')">French</button>
+<button onclick="filterCategory('polish')">Polish</button>
+<button onclick="filterCategory('austrian')">Austrian</button>
+<button onclick="filterCategory('german')">German</button>
+<button onclick="filterCategory('spanish')">Spanish</button>
+</div>
+
+<section class="grid" id="menuGrid">
+
+<!-- Italian Dishes -->
+<div class="card" data-category="italian">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Margherita_Original_Pizza.jpg" alt="Margherita Pizza">
+<h3>Margherita Pizza</h3>
+<p class="price">€12</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="italian">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Spaghetti_alla_Carbonara.jpg" alt="Pasta Carbonara">
+<h3>Pasta Carbonara</h3>
+<p class="price">€11</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="italian">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Lasagna_al_forno.jpg" alt="Lasagna">
+<h3>Lasagna</h3>
+<p class="price">€13</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="italian">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Risotto_alla_milanese.jpg" alt="Mushroom Risotto">
+<h3>Mushroom Risotto</h3>
+<p class="price">€14</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<!-- French Dishes -->
+<div class="card" data-category="french">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Croissant-Petr_Keller.jpg" alt="Croissant">
+<h3>Croissant</h3>
+<p class="price">€6</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="french">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Ratatouille2.jpg" alt="Ratatouille">
+<h3>Ratatouille</h3>
+<p class="price">€12</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="french">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/French_onion_soup.jpg" alt="French Onion Soup">
+<h3>French Onion Soup</h3>
+<p class="price">€10</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<!-- Polish Dishes -->
+<div class="card" data-category="polish">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Pierogi_ruskie_01.jpg" alt="Pierogi">
+<h3>Pierogi</h3>
+<p class="price">€9</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="polish">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Bigos1.jpg" alt="Bigos">
+<h3>Bigos</h3>
+<p class="price">€12</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<!-- Austrian Dishes -->
+<div class="card" data-category="austrian">
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Wiener_schnitzel.jpg" alt="Wiener Schnitzel">
+<h3>Wiener Schnitzel</h3>
+<p class="price">€14</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<!-- German Dishes -->
+<div class="card" data-category="german">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Bratwurst_IMG_6427.jpg" alt="Bratwurst">
+<h3>Bratwurst</h3>
+<p class="price">€11</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<!-- Spanish Dishes -->
+<div class="card" data-category="spanish">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Paella_Valenciana.jpg" alt="Paella">
+<h3>Paella</h3>
+<p class="price">€14</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="spanish">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Churros_01.jpg" alt="Churros">
+<h3>Churros</h3>
+<p class="price">€7</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 HCL Restaurant</p>
+</footer>
+
+<script>
+function searchFood(){
+let input=document.getElementById("searchInput").value.toLowerCase();
+let cards=document.querySelectorAll(".card");
+cards.forEach(card=>{
+let title=card.querySelector("h3").innerText.toLowerCase();
+card.style.display=title.includes(input)? "block":"none";
+});
+}
+
+function filterCategory(category){
+let cards=document.querySelectorAll(".card");
+cards.forEach(card=>{
+card.style.display=(category==="all" || card.getAttribute("data-category")===category)? "block":"none";
+});
+}
+</script>
+
+</body>
+  </html>

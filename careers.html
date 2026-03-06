@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Portal</title>
+<style>
+body {font-family: Arial; max-width: 700px; margin: auto; padding: 20px;}
+button {padding: 10px 20px; margin: 10px 0;}
+.step {display: none;}
+.step.active {display: block;}
+label {display: block; margin-top: 10px;}
+input, select {width: 100%; padding: 8px; margin-top: 5px;}
+#submitMessage {color: green; font-weight: bold; margin-top: 20px;}
+</style>
+</head>
+<body>
+
+<h2>Welcome to HCL Restaurant Job Portal</h2>
+
+<div id="initialButtons">
+  <button onclick="showSection('jobFormContainer')">Apply for Job</button>
+  <button onclick="showSection('trackingContainer')">Check Application Status</button>
+</div>
+
+<!-- Job Form Section -->
+<div id="jobFormContainer" style="display:none;">
+  <h2>Job Application Form</h2>
+  <form id="jobForm" action="https://formspree.io/f/xykdozek" method="POST">
+
+    <!-- Step 1 -->
+    <div class="step active">
+      <h3>Personal Information</h3>
+      <label>Full Name<input type="text" name="fullName" required></label>
+      <label>Father Name<input type="text" name="fatherName" required></label>
+      <label>Date of Birth<input type="date" name="dob" required></label>
+      <label>Age<input type="number" name="age" min="18" required></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>Phone Number<input type="tel" name="phone" required></label>
+      <button type="button" onclick="nextStep(this)">Next</button>
+    </div>
+
+    <!-- Step 2: Address -->
+    <div class="step">
+      <h3>Address Details</h3>
+      <label>Country
+        <select name="country" required>
+          <option value="">Select</option>
+          <option value="Philippines">Philippines 🇵🇭</option>
+          <option value="Vietnam">Vietnam 🇻🇳</option>
+          <option value="Turkey">Turkey 🇹🇷</option>
+          <option value="France">France 🇫🇷</option>
+          <option value="Indonesia">Indonesia 🇮🇩</option>
+          <option value="China">China 🇨🇳</option>
+          <option value="Pakistan">Pakistan 🇵🇰</option>
+          <option value="India">India 🇮🇳</option>
+          <option value="Italy">Italy 🇮🇹</option>
+          <option value="Taiwan">Taiwan 🇹🇼</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+      <label>City Name<input type="text" name="city" required></label>
+      <label>Postal Code<input type="text" name="postal" required></label>
+      <button type="button" onclick="nextStep(this)">Next</button>
+    </div>
+
+    <!-- Step 3: Identity -->
+    <div class="step">
+      <h3>Identity Details</h3>
+      <label>CNIC / National ID<input type="text" name="cnic" required></label>
+      <label>Nationality<input type="text" name="nationality" required></label>
+      <button type="button" onclick="nextStep(this)">Next</button>
+    </div>
+
+    <!-- Step 4: Passport -->
+    <div class="step">
+      <h3>Passport Details</h3>
+      <label>Do you have Passport?
+        <select name="passportAvailable" id="passportAvailable" onchange="togglePassportFields()">
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </label>
+      <div id="passportFields" style="display:none;">
+        <label>Passport Number<input type="text" name="passportNumber" required></label>
+        <label>Date of Issue<input type="date" name="passportIssue" required></label>
+        <label>Date of Expiry<input type="date" name="passportExpiry" required></label>
+      </div>
+      <button type="button" onclick="nextStep(this)">Next</button>
+    </div>
+
+    <!-- Step 5: Education -->
+    <div class="step">
+      <h3>Education Details</h3>
+      <label>Do you have Education?
+        <select name="educationAvailable" id="educationAvailable" onchange="toggleEducationFields()">
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </label>
+      <div id="educationFields" style="display:none;">
+        <label>Highest Qualification
+          <select name="qualification" required>
+            <option value="High School">High School</option>
+            <option value="Bachelor">Bachelor</option>
+            <option value="Master">Master</option>
+            <option value="PhD">PhD</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label>Institute Name<input type="text" name="institute" required></label>
+        <label>Passing Year<input type="number" name="passingYear" required></label>
+        <label>Field / Subject<input type="text" name="field" required></label>
+        <label>Percentage / Grade<input type="text" name="grade" required></label>
+      </div>
+      <button type="button" onclick="nextStep(this)">Next</button>
+    </div>
+
+    <!-- Step 6: Job Position -->
+    <div class="step">
+      <h3>Job Position</h3>
+      <label>Position
+        <select name="jobPosition" required>
+          <option value="">Select</option>
+          <option value="Chief">Chief</option>
+          <option value="Cleaner">Cleaner</option>
+          <option value="Crew Member">Crew Member</option>
+          <option value="Dish Washer">Dish Washer</option>
+          <option value="Assistant Manager">Assistant Manager</option>
+          <option value="Supervisor">Supervisor</option>
+          <option value="Office Worker">Office Worker</option>
+          <option value="Waiter">Waiter</option>
+          <option value="Assistant CEO">Assistant CEO</option>
+          <option value="Master Chief">Master Chief</option>
+          <option value="Food Management">Food Management</option>
+          <option value="Computer Operator">Computer Operator</option>
+          <option value="Receptionist">Receptionist</option>
+          <option value="Kitchen Helper">Kitchen Helper</option>
+          <option value="Shift Head">Shift Head</option>
+        </select>
+      </label>
+      <button type="button" onclick="nextStep(this)">Next</button>
+    </div>
+
+    <!-- Step 7: Shift & Submit -->
+    <div class="step">
+      <h3>Shift & Submit</h3>
+      <label>Select Shift
+        <select name="shift" required>
+          <option value="Morning">Morning Shift</option>
+          <option value="Night">Night Shift</option>
+        </select>
+      </label>
+      <button type="submit">Submit Application</button>
+    </div>
+
+  </form>
+  <p id="submitMessage"></p>
+</div>
+
+<!-- Tracking Section -->
+<div id="trackingContainer" style="display:none;">
+  <h2>Check Application Status</h2>
+  <label>Email<input type="email" id="trackEmail"></label>
+  <button onclick="checkStatus()">Check Status</button>
+  <p id="statusResult"></p>
+</div>
+
+<script>
+function showSection(id){
+  document.getElementById('initialButtons').style.display = 'none';
+  document.getElementById('jobFormContainer').style.display = id==='jobFormContainer' ? 'block' : 'none';
+  document.getElementById('trackingContainer').style.display = id==='trackingContainer' ? 'block' : 'none';
+}
+
+// Multi-step form
+let currentStep = 0;
+const steps = document.querySelectorAll(".step");
+
+function nextStep(button){
+  const inputs = steps[currentStep].querySelectorAll("input, select");
+  for(let input of inputs){
+    if(!input.checkValidity()){
+      input.reportValidity();
+      return;
+    }
+  }
+  steps[currentStep].classList.remove("active");
+  currentStep++;
+  if(currentStep < steps.length){
+    steps[currentStep].classList.add("active");
+  }
+}
+
+// Conditional fields
+function togglePassportFields(){
+  const show = document.getElementById('passportAvailable').value === 'Yes';
+  document.getElementById('passportFields').style.display = show ? 'block' : 'none';
+  const fields = document.querySelectorAll('#passportFields input');
+  fields.forEach(f => f.required = show);
+}
+function toggleEducationFields(){
+  const show = document.getElementById('educationAvailable').value === 'Yes';
+  document.getElementById('educationFields').style.display = show ? 'block' : 'none';
+  const fields = document.querySelectorAll('#educationFields input, #educationFields select');
+  fields.forEach(f => f.required = show);
+}
+
+// Submit handler
+document.getElementById("jobForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const form = e.target;
+  fetch(form.action, {
+    method: form.method,
+    body: new FormData(form),
+    headers: {"Accept": "application/json"}
+  }).then(response => {
+    document.getElementById('submitMessage').innerHTML = 
+      "Thank you! Please send your CV and picture to <b>hclrestaurantofficial@gmail.com</b>";
+    form.reset();
+    currentStep = 0;
+    steps.forEach((s,i)=> s.classList.toggle("active", i===0));
+  }).catch(err => {
+    document.getElementById('submitMessage').innerHTML = "Error submitting form. Please try again.";
+    console.error(err);
+  });
+});
+
+// Tracking function
+function checkStatus(){
+  const email = document.getElementById('trackEmail').value;
+  const url = "https://script.google.com/macros/s/AKfycbzdjCdDrZXhief3znyxmh2LQ14Hv7WNIGY0udSveYcO8DJ3EabY_TTSk0DxXzjY6ARb/exec?email=" + encodeURIComponent(email);
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('statusResult').innerHTML = 
+      "Status: " + data.status + "<br>Last Update: " + data.lastUpdate;
+  }).catch(err => {
+    document.getElementById('statusResult').innerHTML = "Error checking status";
+    console.error(err);
+  });
+}
+</script>
+
+</body>
+</html>

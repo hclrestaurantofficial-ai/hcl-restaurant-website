@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCL Restaurant Menu</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f4f4;}
+header{display:flex;justify-content:space-between;align-items:center;background:#111;color:white;padding:15px 40px;position:sticky;top:0;z-index:100;}
+.logo{font-size:24px;font-weight:bold;}
+nav a{color:white;margin:0 15px;text-decoration:none;font-weight:bold;}
+nav a:hover{color:orange;}
+.search{margin:20px;text-align:center;}
+.search input{padding:10px;width:300px;font-size:16px;border-radius:5px;border:1px solid #ccc;}
+.filter-buttons{text-align:center;margin:20px;}
+.filter-buttons button{margin:5px;padding:8px 15px;border:none;border-radius:5px;background:#e63946;color:white;cursor:pointer;}
+.filter-buttons button:hover{background:#c1121f;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;padding:20px 8%;}
+.card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,0.1);position:relative;}
+.card img{width:100%;height:180px;object-fit:cover;}
+.card h3{margin:10px;}
+.price{color:#e63946;font-weight:bold;margin:0 10px 10px;}
+button.add-cart{position:absolute;bottom:10px;right:10px;padding:6px 12px;background:#0077b6;color:white;border:none;border-radius:5px;cursor:pointer;}
+button.add-cart:hover{background:#023e8a;}
+footer{background:#111;color:white;text-align:center;padding:20px;margin-top:40px;}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">HCL Restaurant</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="menu.html">Menu</a>
+<a href="careers.html">Careers</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<div class="search">
+<input type="text" id="searchInput" placeholder="Search food..." onkeyup="searchFood()">
+</div>
+
+<div class="filter-buttons">
+<button onclick="filterCategory('all')">All</button>
+<button onclick="filterCategory('italian')">Italian</button>
+<button onclick="filterCategory('french')">French</button>
+<button onclick="filterCategory('polish')">Polish</button>
+<button onclick="filterCategory('austrian')">Austrian</button>
+<button onclick="filterCategory('german')">German</button>
+<button onclick="filterCategory('spanish')">Spanish</button>
+</div>
+
+<section class="grid" id="menuGrid">
+
+<!-- Italian -->
+<div class="card" data-category="italian">
+<img src="https://source.unsplash.com/400x300/?pizza">
+<h3>Margherita Pizza</h3>
+<p class="price">€12</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="italian">
+<img src="https://source.unsplash.com/400x300/?pasta">
+<h3>Pasta Carbonara</h3>
+<p class="price">€11</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="italian">
+<img src="https://source.unsplash.com/400x300/?lasagna">
+<h3>Lasagna</h3>
+<p class="price">€13</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="italian">
+<img src="https://source.unsplash.com/400x300/?risotto">
+<h3>Mushroom Risotto</h3>
+<p class="price">€14</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="italian">
+<img src="https://source.unsplash.com/400x300/?bruschetta">
+<h3>Bruschetta</h3>
+<p class="price">€8</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<!-- French -->
+<div class="card" data-category="french">
+<img src="https://source.unsplash.com/400x300/?croissant">
+<h3>Croissant</h3>
+<p class="price">€6</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="french">
+<img src="https://source.unsplash.com/400x300/?ratatouille">
+<h3>Ratatouille</h3>
+<p class="price">€12</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="french">
+<img src="https://source.unsplash.com/400x300/?french-onion-soup">
+<h3>French Onion Soup</h3>
+<p class="price">€10</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="french">
+<img src="https://source.unsplash.com/400x300/?quiche">
+<h3>Quiche Lorraine</h3>
+<p class="price">€11</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="french">
+<img src="https://source.unsplash.com/400x300/?baguette">
+<h3>Baguette with Cheese</h3>
+<p class="price">€7</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<!-- Polish -->
+<div class="card" data-category="polish">
+<img src="https://source.unsplash.com/400x300/?pierogi">
+<h3>Pierogi</h3>
+<p class="price">€9</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="polish">
+<img src="https://source.unsplash.com/400x300/?bigos">
+<h3>Bigos</h3>
+<p class="price">€12</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="polish">
+<img src="https://source.unsplash.com/400x300/?cabbage-rolls">
+<h3>Golabki (Cabbage Rolls)</h3>
+<p class="price">€11</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<!-- Austrian -->
+<div class="card" data-category="austrian">
+<img src="https://source.unsplash.com/400x300/?schnitzel">
+<h3>Wiener Schnitzel</h3>
+<p class="price">€14</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="austrian">
+<img src="https://source.unsplash.com/400x300/?strudel">
+<h3>Apple Strudel</h3>
+<p class="price">€8</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="austrian">
+<img src="https://source.unsplash.com/400x300/?goulash">
+<h3>Austrian Goulash</h3>
+<p class="price">€13</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<!-- German -->
+<div class="card" data-category="german">
+<img src="https://source.unsplash.com/400x300/?sausage">
+<h3>Bratwurst</h3>
+<p class="price">€11</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="german">
+<img src="https://source.unsplash.com/400x300/?pretzel">
+<h3>Bavarian Pretzel</h3>
+<p class="price">€7</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="german">
+<img src="https://source.unsplash.com/400x300/?pork-roast">
+<h3>Schweinebraten</h3>
+<p class="price">€15</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<!-- Spanish -->
+<div class="card" data-category="spanish">
+<img src="https://source.unsplash.com/400x300/?paella">
+<h3>Paella</h3>
+<p class="price">€14</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="spanish">
+<img src="https://source.unsplash.com/400x300/?tapas">
+<h3>Spanish Tapas</h3>
+<p class="price">€10</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="spanish">
+<img src="https://source.unsplash.com/400x300/?churros">
+<h3>Churros</h3>
+<p class="price">€7</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+<div class="card" data-category="spanish">
+<img src="https://source.unsplash.com/400x300/?gazpacho">
+<h3>Gazpacho</h3>
+<p class="price">€9</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 HCL Restaurant</p>
+</footer>
+
+<script>
+function searchFood(){
+let input=document.getElementById("searchInput").value.toLowerCase();
+let cards=document.querySelectorAll(".card");
+cards.forEach(card=>{
+let title=card.querySelector("h3").innerText.toLowerCase();
+card.style.display=title.includes(input)? "block":"none";
+});
+}
+
+function filterCategory(category){
+let cards=document.querySelectorAll(".card");
+cards.forEach(card=>{
+card.style.display=(category==="all" || card.getAttribute("data-category")===category)? "block":"none";
+});
+}
+</script>
+
+</body>
+  </html>

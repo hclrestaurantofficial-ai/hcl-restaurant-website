@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HCl Restaurant Menu</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#111;
+color:white;
+}
+
+/* HEADER */
+
+header{
+background:#ff5722;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+nav a{
+color:white;
+margin:0 10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+nav a:hover{
+text-decoration:underline;
+}
+
+.search-box input{
+padding:5px;
+}
+
+/* MAIN */
+
+main{
+padding:30px;
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+color:#ffd700;
+}
+
+/* MENU GRID */
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.dish{
+background:#222;
+border-radius:10px;
+padding:10px;
+text-align:center;
+transition:0.3s;
+}
+
+.dish:hover{
+transform:scale(1.05);
+}
+
+.dish img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.price{
+color:#ffd700;
+font-weight:bold;
+}
+
+/* BOOKING */
+
+.booking{
+margin-top:50px;
+background:#222;
+padding:20px;
+border-radius:10px;
+}
+
+.booking form{
+display:flex;
+flex-direction:column;
+max-width:500px;
+margin:auto;
+}
+
+.booking input,
+.booking select,
+.booking textarea{
+padding:10px;
+margin:8px 0;
+border:none;
+border-radius:5px;
+}
+
+.booking button{
+padding:12px;
+background:#ff5722;
+color:white;
+border:none;
+border-radius:5px;
+font-size:16px;
+cursor:pointer;
+}
+
+.booking button:hover{
+background:#ff784e;
+}
+
+#status{
+text-align:center;
+margin-top:10px;
+font-weight:bold;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#333;
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h2>HCl Restaurant</h2>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="menu.html">Menu</a>
+<a href="jobs.html">Job Portal</a>
+<a href="tracking.html">Tracking</a>
+</nav>
+
+<div class="search-box">
+<input id="searchInput" placeholder="Search page">
+<button onclick="searchPage()">Search</button>
+</div>
+
+</header>
+
+<main>
+
+<h1>Our Menu</h1>
+
+<!-- ITALY -->
+
+<h2>Italy Dishes</h2>
+
+<div class="menu-grid">
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?pizza">
+<h3>Pizza</h3>
+<p class="price">€18</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?pasta">
+<h3>Pasta</h3>
+<p class="price">€16</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?lasagna">
+<h3>Lasagna</h3>
+<p class="price">€17</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?risotto">
+<h3>Risotto</h3>
+<p class="price">€19</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?tiramisu">
+<h3>Tiramisu</h3>
+<p class="price">€10</p>
+</div>
+
+</div>
+
+
+<!-- GERMANY -->
+
+<h2>Germany Dishes</h2>
+
+<div class="menu-grid">
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?sauerbraten">
+<h3>Sauerbraten</h3>
+<p class="price">€22</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?bratwurst">
+<h3>Bratwurst</h3>
+<p class="price">€14</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?schnitzel">
+<h3>Schnitzel</h3>
+<p class="price">€21</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?currywurst">
+<h3>Currywurst</h3>
+<p class="price">€13</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?spatzle">
+<h3>Spätzle</h3>
+<p class="price">€15</p>
+</div>
+
+</div>
+
+
+<!-- FRANCE -->
+
+<h2>France Dishes</h2>
+
+<div class="menu-grid">
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?boeuf-bourguignon">
+<h3>Boeuf Bourguignon</h3>
+<p class="price">€25</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?coq-au-vin">
+<h3>Coq au Vin</h3>
+<p class="price">€24</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?ratatouille">
+<h3>Ratatouille</h3>
+<p class="price">€18</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?quiche">
+<h3>Quiche Lorraine</h3>
+<p class="price">€17</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?escargots">
+<h3>Escargots</h3>
+<p class="price">€23</p>
+</div>
+
+</div>
+
+
+<!-- SPAIN -->
+
+<h2>Spain Dishes</h2>
+
+<div class="menu-grid">
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?tortilla-spanish">
+<h3>Tortilla de Patatas</h3>
+<p class="price">€12</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?jamon">
+<h3>Jamón Ibérico</h3>
+<p class="price">€27</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?gazpacho">
+<h3>Gazpacho</h3>
+<p class="price">€11</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?churros">
+<h3>Churros con Chocolate</h3>
+<p class="price">€9</p>
+</div>
+
+<div class="dish">
+<img src="https://source.unsplash.com/400x300/?patatas-bravas">
+<h3>Patatas Bravas</h3>
+<p class="price">€10</p>
+</div>
+
+</div>
+
+
+<!-- TABLE BOOKING -->
+
+<div class="booking">
+
+<h2>Table Booking</h2>
+
+<form id="bookingForm">
+
+<input placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<input placeholder="Phone with Country Code (+39 etc)" required>
+
+<textarea placeholder="Home Address" required></textarea>
+
+<select id="floor" required>
+<option value="">Select Floor</option>
+<option>First Floor</option>
+<option>Second Floor</option>
+<option>Third Floor</option>
+</select>
+
+<select id="table" required>
+<option value="">Select Table</option>
+<option>1</option><option>2</option><option>3</option>
+<option>4</option><option>5</option><option>6</option>
+<option>7</option><option>8</option><option>9</option>
+<option>10</option><option>11</option><option>12</option>
+<option>13</option><option>14</option><option>15</option>
+<option>16</option><option>17</option><option>18</option>
+<option>19</option><option>20</option>
+</select>
+
+<input type="time" required>
+
+<button type="submit">Book Table</button>
+
+</form>
+
+<p id="status"></p>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 HCl Restaurant
+</footer>
+
+<script>
+
+function searchPage(){
+
+let input=document.getElementById("searchInput").value.toLowerCase();
+
+if(input=="home") location="index.html";
+else if(input=="about") location="about.html";
+else if(input=="menu") location="menu.html";
+else if(input=="job portal") location="jobs.html";
+else if(input=="tracking") location="tracking.html";
+else alert("Page not found");
+
+}
+
+let bookedTables=[];
+
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let floor=document.getElementById("floor").value;
+let table=document.getElementById("table").value;
+
+let key=floor+"-"+table;
+
+if(bookedTables.includes(key)){
+
+document.getElementById("status").innerText="❌ Table already booked";
+
+}else{
+
+bookedTables.push(key);
+
+document.getElementById("status").innerText="✅ Booking successful";
+
+}
+
+});
+
+</script>
+
+</body>
+  </html>

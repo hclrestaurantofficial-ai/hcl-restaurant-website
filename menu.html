@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCl Restaurant - Menu</title>
+<style>
+    body, html { margin:0; padding:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body {
+        background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color:white;
+    }
+    body::before { content:""; position:fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); z-index:0; }
+
+    header {
+        position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background: rgba(255,87,34,0.85); flex-wrap:wrap; color:white;
+    }
+    nav a { color:white; margin:0 10px; text-decoration:none; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+    .search-box { display:flex; align-items:center; margin-top:5px; }
+    .search-box input { padding:5px; width:150px; border-radius:3px; border:none; margin-right:5px; }
+    .search-box button { padding:5px 10px; border:none; background:white; color:#ff5722; font-weight:bold; border-radius:3px; cursor:pointer; }
+    .search-box button:hover { background:#fff3e0; }
+
+    main { position:relative; z-index:1; max-width:1000px; margin:100px auto 50px auto; padding:25px; background: rgba(0,0,0,0.6); border-radius:15px; box-shadow:0 0 20px rgba(0,0,0,0.7); }
+
+    h1 { font-size:3em; margin-bottom:20px; color:#ffcc00; text-align:center; }
+    h2 { color:#ff5722; margin-top:20px; }
+    p { font-size:1.1em; line-height:1.6; }
+
+    .menu-section { display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:20px; }
+    .dish { background: rgba(255,255,255,0.1); border-radius:10px; margin:10px; flex:1 1 200px; text-align:center; padding:10px; transition: transform 0.3s; }
+    .dish img { width:100%; height:150px; object-fit:cover; border-radius:10px; }
+    .dish:hover { transform: scale(1.05); }
+    .dish h3 { color:#ffcc00; margin:10px 0 5px 0; }
+    .dish p { margin:5px 0; }
+
+    .booking { margin-top:40px; text-align:center; }
+    .booking form { display:flex; flex-direction:column; max-width:500px; margin:auto; }
+    .booking input, .booking textarea, .booking button { margin:8px 0; padding:10px; border-radius:5px; border:none; }
+    .booking button { background:#ff5722; color:white; font-weight:bold; cursor:pointer; }
+    .booking button:hover { background:#ff784e; }
+
+    footer { position:relative; z-index:1; text-align:center; padding:15px; background: rgba(51,51,51,0.85); color:white; margin-top:50px; }
+
+    @media(max-width:600px){
+        header { flex-direction:column; align-items:flex-start; }
+        nav { margin-top:10px; }
+        .menu-section { flex-direction:column; align-items:center; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo"><h2>HCl Restaurant</h2></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="menu.html">Menu</a>
+<a href="jobs.html">Job Portal</a>
+<a href="tracking.html">Tracking</a>
+</nav>
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search page...">
+<button onclick="searchPage()">Search</button>
+</div>
+</header>
+
+<main>
+<h1>Our Menu</h1>
+
+<h2>Italy</h2>
+<div class="menu-section">
+    <div class="dish">
+        <img src="https://images.unsplash.com/photo-1603073874806-0644c9cce0a4?auto=format&fit=crop&w=400&q=80" alt="Pizza">
+        <h3>Pizza</h3>
+        <p>€12</p>
+    </div>
+    <div class="dish">
+        <img src="https://images.unsplash.com/photo-1599785209707-d0e7ec56e53f?auto=format&fit=crop&w=400&q=80" alt="Pasta">
+        <h3>Pasta</h3>
+        <p>€10</p>
+    </div>
+    <div class="dish">
+        <img src="https://images.unsplash.com/photo-1599785209707-3f5d3b7c9a41?auto=format&fit=crop&w=400&q=80" alt="Lasagna">
+        <h3>Lasagna</h3>
+        <p>€11</p>
+    </div>
+    <div class="dish">
+        <img src="https://images.unsplash.com/photo-1603073861683-f1f6a0d8754f?auto=format&fit=crop&w=400&q=80" alt="Risotto">
+        <h3>Risotto</h3>
+        <p>€13</p>
+    </div>
+    <div class="dish">
+        <img src="https://images.unsplash.com/photo-1603073847920-b2085f1d4f49?auto=format&fit=crop&w=400&q=80" alt="Tiramisu">
+        <h3>Tiramisu</h3>
+        <p>€7</p>
+    </div>
+</div>
+
+<h2>Germany</h2>
+<div class="menu-section">
+    <div class="dish"><img src="https://images.unsplash.com/photo-1603073805842-62f6d7b45a4f?auto=format&fit=crop&w=400&q=80" alt="Sauerbraten"><h3>Sauerbraten</h3><p>€18</p></div>
+    <div class="dish"><img src="https://images.unsplash.com/photo-1599785209707-cbc7d0c0d4c2?auto=format&fit=crop&w=400&q=80" alt="Bratwurst"><h3>Bratwurst</h3><p>€9</p></div>
+    <div class="dish"><img src="https://images.unsplash.com/photo-1603073861682-0b7a1d3f9a42?auto=format&fit=crop&w=400&q=80" alt="Schnitzel"><h3>Schnitzel</h3><p>€15</p></div>
+    <div class="dish"><img src="https://images.unsplash.com/photo-1603073874805-4a1d6fbb1b2c?auto=format&fit=crop&w=400&q=80" alt="Currywurst"><h3>Currywurst</h3><p>€8</p></div>
+    <div class="dish"><img src="https://images.unsplash.com/photo-1603073805843-9f6d7a8e1b2a?auto=format&fit=crop&w=400&q=80" alt="Rouladen"><h3>Rouladen</h3><p>€17</p></div>
+</div>
+
+<h2>Spain</h2>
+<div class="menu-section">
+    <div class="dish"><img src="https://images.unsplash.com/photo-1599785209707-23a7d0c0c9b3?auto=format&fit=crop&w=400&q=80" alt="Paella"><h3>Paella</h3><p>€14</p></div>
+    <div class="dish"><img src="https://images.unsplash.com/photo-1603073805841-8f6d7a1b2c3f?auto=format&fit=crop&w=400&q=80" alt="Tortilla de Patatas"><h3>Tortilla de Patatas</h3><p>€7</p></div>
+    <div class="dish"><img src="https://images.unsplash.com/photo-1603073805840-6f6d7b3f2c4e?auto=format&fit=crop&w=400&q=80" alt="Churros con Chocolate"><h3>Churros con Chocolate</h3><p>€5</p></div>
+    <div class="dish"><img src="https://images.unsplash.com/photo-1603073805844-4f6d7b3e2d5a?auto=format&fit=crop&w=400&q=80" alt="Gazpacho"><h3>Gazpacho</h3><p>€6</p></div>
+</div>
+
+<h2>Table Booking</h2>
+<div class="booking">
+<form action="mailto:hclrestaurantofficial@gmail.com" method="post">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<input type="tel" name="phone" placeholder="Phone (with country code)" required>
+<textarea name="address" rows="3" placeholder="Home Address" required></textarea>
+<button type="submit">Book Table</button>
+</form>
+</div>
+
+</main>
+
+<footer>
+<p>&copy; 2026 HCl Restaurant | Excellence in Hospitality</p>
+</footer>
+
+<script>
+function searchPage(){
+    const input=document.getElementById('searchInput').value.toLowerCase().trim();
+    switch(input){
+        case 'home': window.location.href='index.html'; break;
+        case 'about': window.location.href='about.html'; break;
+        case 'menu': window.location.href='menu.html'; break;
+        case 'job portal': case 'jobs': window.location.href='jobs.html'; break;
+        case 'tracking': window.location.href='tracking.html'; break;
+        default: alert('Page not found. Try Home, About, Menu, Job Portal, or Tracking.');
+    }
+}
+</script>
+
+</body>
+      </html>

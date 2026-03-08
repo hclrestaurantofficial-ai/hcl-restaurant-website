@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCl Restaurant - About</title>
+    <style>
+        body, html { margin:0; padding:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        /* Background */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color:white;
+        }
+        body::before {
+            content:"";
+            position:fixed;
+            top:0; left:0; right:0; bottom:0;
+            background: rgba(0,0,0,0.5);
+            z-index:0;
+        }
+
+        /* Header */
+        header {
+            position:relative;
+            z-index:1;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:15px 30px;
+            background: rgba(255,87,34,0.85);
+            flex-wrap:wrap;
+            color:white;
+        }
+        nav a { color:white; margin:0 10px; text-decoration:none; font-weight:bold; }
+        nav a:hover { text-decoration:underline; }
+        .search-box { display:flex; align-items:center; margin-top:5px; }
+        .search-box input { padding:5px; width:150px; border-radius:3px; border:none; margin-right:5px; }
+        .search-box button { padding:5px 10px; border:none; background:white; color:#ff5722; font-weight:bold; border-radius:3px; cursor:pointer; }
+        .search-box button:hover { background:#fff3e0; }
+
+        /* Main content */
+        main {
+            position:relative;
+            z-index:1;
+            max-width:1000px;
+            margin:100px auto 50px auto;
+            padding:25px;
+            background: rgba(0,0,0,0.6);
+            border-radius:15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.7);
+        }
+        main h1 { font-size:3em; margin-bottom:20px; color:#ffcc00; text-align:center; }
+        main h2 { color:#ff5722; margin-top:20px; }
+        main p { font-size:1.1em; line-height:1.6; margin-bottom:10px; }
+
+        /* Branches */
+        .branches { display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:20px; }
+        .branch { background: rgba(255,255,255,0.1); padding:15px; border-radius:10px; margin:10px; flex:1 1 200px; text-align:center; transition: transform 0.3s; }
+        .branch:hover { transform: scale(1.05); }
+
+        /* Map Section */
+        #map { width:100%; height:400px; margin-top:20px; border-radius:10px; overflow:hidden; }
+
+        /* Contact Form */
+        .contact { margin-top:30px; }
+        .contact form { display:flex; flex-direction:column; max-width:500px; margin:auto; }
+        .contact input, .contact textarea, .contact button { margin:8px 0; padding:10px; border-radius:5px; border:none; }
+        .contact button { background:#ff5722; color:white; font-weight:bold; cursor:pointer; }
+        .contact button:hover { background:#ff784e; }
+
+        /* Footer */
+        footer {
+            position:relative;
+            z-index:1;
+            text-align:center;
+            padding:15px;
+            background: rgba(51,51,51,0.85);
+            color:white;
+            margin-top:50px;
+        }
+
+        @media(max-width:600px){
+            header { flex-direction:column; align-items:flex-start; }
+            nav { margin-top:10px; }
+            .branches { flex-direction:column; align-items:center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo"><h2>HCl Restaurant</h2></div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="jobs.html">Job Portal</a>
+        <a href="tracking.html">Tracking</a>
+    </nav>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search page...">
+        <button onclick="searchPage()">Search</button>
+    </div>
+</header>
+
+<main>
+    <h1>About HCl Restaurant</h1>
+
+    <p><strong>HCl Restaurant</strong> was founded in <strong>2014</strong> in <strong>Rome, Italy</strong>, with a mission to bring authentic Italian flavors to the world. Our restaurant blends traditional recipes with modern hospitality for an unforgettable dining experience.</p>
+
+    <h2>Our Specialty & Team</h2>
+    <p>We focus on <strong>signature pasta & pizzas</strong>, crafted by our expert chefs. Our dedicated team ensures top-notch <strong>hospitality</strong> and service to make every guest feel special.</p>
+
+    <h2>Branches & Timings</h2>
+    <p>HCl Restaurant has <strong>4 international branches</strong> with 24-hour service and 8-hour shifts:</p>
+    <div class="branches">
+        <div class="branch">Italy – Via Alberto Cadlolo, 101, 00136 Roma RM</div>
+        <div class="branch">Germany – 99819 Krauthausen</div>
+        <div class="branch">Spain – CUV-5042, 14, 16373 Paracuellos, Cuenca</div>
+        <div class="branch">French Polynesia – Māhina</div>
+    </div>
+
+    <h2>Find Us on Map</h2>
+    <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.9147348449786!2d12.448377415050513!3d41.917621079219465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f61a7d5b8c0c1%3A0x820c7c6c71c529bc!2sVia%20Alberto%20Cadlolo%2C%20101%2C%2000136%20Roma%20RM%2C%20Italy!5e0!3m2!1sen!2s!4v1701500000000!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <h2>Contact & Feedback</h2>
+    <p>Email us at: <a href="mailto:hclrestaurantofficial@gmail.com" style="color:#ffcc00;">hclrestaurantofficial@gmail.com</a></p>
+
+    <div class="contact">
+        <form action="https://formspree.io/f/xwvrpbza" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Feedback" required></textarea>
+            <button type="submit">Send Feedback</button>
+        </form>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 HCl Restaurant | Excellence in Hospitality</p>
+</footer>
+
+<script>
+    function searchPage() {
+        const input = document.getElementById('searchInput').value.toLowerCase().trim();
+        switch(input) {
+            case 'home': window.location.href='index.html'; break;
+            case 'about': window.location.href='about.html'; break;
+            case 'menu': window.location.href='menu.html'; break;
+            case 'job portal':
+            case 'jobs': window.location.href='jobs.html'; break;
+            case 'tracking': window.location.href='tracking.html'; break;
+            default: alert('Page not found. Try Home, About, Menu, Job Portal, or Tracking.');
+        }
+    }
+</script>
+
+</body>
+          </html>

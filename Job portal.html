@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HCL Job Portal</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+margin:0;
+}
+
+.container{
+width:90%;
+max-width:700px;
+margin:auto;
+background:white;
+padding:25px;
+margin-top:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+}
+
+.progress{
+width:100%;
+background:#ddd;
+height:20px;
+border-radius:20px;
+margin-bottom:20px;
+}
+
+.progress-bar{
+height:20px;
+background:#28a745;
+width:12%;
+border-radius:20px;
+}
+
+.step{
+display:none;
+}
+
+.step.active{
+display:block;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+padding:10px 20px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>HCL Job Application</h2>
+
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<form id="jobForm">
+
+<!-- STEP 1 -->
+
+<div class="step active">
+
+<h3>Personal Information</h3>
+
+<label>Full Name</label>
+<input type="text" required>
+
+<label>Father Name</label>
+<input type="text" required>
+
+<label>Date of Birth</label>
+<input type="date" id="dob" required>
+
+<label>Email</label>
+<input type="email" required>
+
+<label>Phone Number</label>
+<input type="tel" required>
+
+<label>Country</label>
+<select required>
+
+<option>🇵🇭 Philippines</option>
+<option>🇻🇳 Vietnam</option>
+<option>🇹🇷 Turkey</option>
+<option>🇫🇷 France</option>
+<option>🇮🇩 Indonesia</option>
+<option>🇨🇳 China</option>
+<option>🇵🇰 Pakistan</option>
+<option>🇮🇳 India</option>
+<option>🇮🇹 Italy</option>
+<option>🇪🇸 Spain</option>
+<option>🇵🇱 Poland</option>
+<option>🇦🇹 Austria</option>
+<option>🇩🇪 Germany</option>
+<option>🇹🇼 Taiwan</option>
+<option>Other</option>
+
+</select>
+
+<button type="button" onclick="next()">Next</button>
+
+</div>
+
+<!-- STEP 2 -->
+
+<div class="step">
+
+<h3>Address</h3>
+
+<label>Home Address</label>
+<input type="text">
+
+<label>City</label>
+<input type="text">
+
+<label>State / Province</label>
+<input type="text">
+
+<label>Postal Code</label>
+<input type="text">
+
+<button type="button" onclick="prev()">Back</button>
+<button type="button" onclick="next()">Next</button>
+
+</div>
+
+<!-- STEP 3 -->
+
+<div class="step">
+
+<h3>Education</h3>
+
+<select>
+
+<option>High School</option>
+<option>Bachelor</option>
+<option>Master</option>
+<option>PhD</option>
+<option>Other</option>
+
+</select>
+
+<label>Institute Name</label>
+<input type="text">
+
+<label>Passing Year</label>
+<input type="number">
+
+<label>Upload Education Document</label>
+<input type="file">
+
+<button onclick="prev()" type="button">Back</button>
+<button onclick="next()" type="button">Next</button>
+
+</div>
+
+<!-- STEP 4 -->
+
+<div class="step">
+
+<h3>Work Experience</h3>
+
+<label>Company Name</label>
+<input type="text">
+
+<label>Job Role</label>
+<input type="text">
+
+<label>Experience Years</label>
+<input type="number">
+
+<button onclick="prev()" type="button">Back</button>
+<button onclick="next()" type="button">Next</button>
+
+</div>
+
+<!-- STEP 5 -->
+
+<div class="step">
+
+<h3>Passport Details</h3>
+
+<label>Passport Number</label>
+<input type="text">
+
+<label>Date of Issue</label>
+<input type="date">
+
+<label>Date of Expiry</label>
+<input type="date">
+
+<label>Upload Passport</label>
+<input type="file">
+
+<button onclick="prev()" type="button">Back</button>
+<button onclick="next()" type="button">Next</button>
+
+</div>
+
+<!-- STEP 6 -->
+
+<div class="step">
+
+<h3>Job Position</h3>
+
+<select>
+
+<option>Chief Cleaner</option>
+<option>Crew Member</option>
+<option>Dish Washer</option>
+<option>Assistant Manager</option>
+<option>Supervisor</option>
+<option>Office Worker</option>
+<option>Waiter</option>
+<option>Reception</option>
+<option>Kitchen Helper</option>
+
+</select>
+
+<label>Shift</label>
+
+<select>
+
+<option>Morning Shift</option>
+<option>Night Shift</option>
+
+</select>
+
+<button onclick="prev()" type="button">Back</button>
+<button onclick="next()" type="button">Next</button>
+
+</div>
+
+<!-- STEP 7 -->
+
+<div class="step">
+
+<h3>Upload CV</h3>
+
+<label>Upload CV</label>
+<input type="file">
+
+<label>Upload Picture</label>
+<input type="file">
+
+<button onclick="prev()" type="button">Back</button>
+<button onclick="next()" type="button">Next</button>
+
+</div>
+
+<!-- STEP 8 -->
+
+<div class="step">
+
+<h3>Submit Application</h3>
+
+<button onclick="prev()" type="button">Back</button>
+
+<button type="submit">Submit</button>
+
+</div>
+
+</form>
+
+</div>
+
+<script>
+
+let step=0;
+const steps=document.querySelectorAll(".step");
+const progress=document.getElementById("progressBar");
+
+function show(){
+steps.forEach((s,i)=>{
+s.classList.remove("active");
+if(i===step)s.classList.add("active");
+});
+
+progress.style.width=((step+1)/steps.length*100)+"%";
+}
+
+function next(){
+
+if(step==0){
+
+let dob=document.getElementById("dob").value;
+
+let age=new Date().getFullYear()-new Date(dob).getFullYear();
+
+if(age<18){
+alert("Age must be 18+");
+return;
+}
+
+}
+
+step++;
+
+if(step>=steps.length)step=steps.length-1;
+
+show();
+
+}
+
+function prev(){
+
+step--;
+
+if(step<0)step=0;
+
+show();
+
+}
+
+show();
+
+</script>
+
+</body>
+</html>

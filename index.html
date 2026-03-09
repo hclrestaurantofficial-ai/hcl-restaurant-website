@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCL Restaurant</title>
+<style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Arial', sans-serif;}
+    html, body {height:100%; color:#fff;}
+
+    body {
+        background: #000;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: background 0.5s ease-in-out;
+    }
+
+    header {
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:20px 50px;
+        background-color:rgba(0,0,0,0.6);
+    }
+
+    header h1 {font-size:28px; color:#ffdd59;}
+
+    nav ul {list-style:none; display:flex; gap:25px;}
+    nav ul li a {text-decoration:none; color:#fff; font-weight:bold; transition:0.3s;}
+    nav ul li a:hover {color:#ffdd59;}
+
+    .search-box {display:flex; gap:5px;}
+    .search-box input[type="text"] {padding:5px; border:none; border-radius:5px;}
+    .search-box button {
+        padding:5px 10px;
+        border:none;
+        border-radius:5px;
+        background:#ffdd59;
+        color:#000;
+        font-weight:bold;
+        cursor:pointer;
+        transition:0.3s;
+    }
+    .search-box button:hover {background:#fff;}
+
+    main {text-align:center; padding:150px 20px;}
+    main h2 {font-size:48px; margin-bottom:20px; color:#ffdd59; text-shadow:2px 2px 5px #000;}
+    main p {font-size:22px; text-shadow:1px 1px 4px #000;}
+
+    footer {text-align:center; padding:20px; background-color:rgba(0,0,0,0.6);}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>HCL Restaurant</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="tracking.html">Tracking</a></li>
+        </ul>
+    </nav>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search page...">
+        <button onclick="searchPage()">Go</button>
+    </div>
+</header>
+
+<main>
+    <h2>Welcome to HCL Restaurant</h2>
+    <p>Delicious food & exceptional service!</p>
+</main>
+
+<footer>
+    <p>&copy; 2026 HCL Restaurant</p>
+</footer>
+
+<script>
+// Function to load background image from Unsplash reliably
+function setRandomBackground() {
+    const keywords = ["restaurant","food","cuisine","dining"];
+    const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)];
+    const img = new Image();
+    img.src = `https://source.unsplash.com/1600x900/?${randomKeyword}&sig=${Math.floor(Math.random()*1000)}`;
+    img.onload = function() {
+        document.body.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${img.src}')`;
+    }
+}
+setRandomBackground();
+
+// Search button functionality
+function searchPage() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const pages = {
+        "home": "index.html",
+        "about": "about.html",
+        "menu": "menu.html",
+        "contact": "contact.html",
+        "jobs": "jobs.html",
+        "tracking": "tracking.html"
+    };
+    if(pages[input]) {
+        window.location.href = pages[input];
+    } else {
+        alert('Page not found!');
+    }
+}
+</script>
+
+</body>
+</html>

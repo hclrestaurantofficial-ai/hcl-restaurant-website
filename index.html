@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCL Restaurant</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
+  body { scroll-behavior: smooth; }
+  header {
+    position: sticky; top:0; background:#222; color:#fff; padding:15px 0; z-index:1000;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  nav a {
+    color:#fff; text-decoration:none; margin:0 15px; font-weight:bold;
+    transition: color 0.3s;
+  }
+  nav a:hover { color:#f57c00; }
+  #search-bar {
+    padding:5px; border-radius:5px; border:none;
+  }
+  section {
+    min-height:100vh; display:flex; justify-content:center; align-items:center; text-align:center;
+    padding:50px; color:#fff; position:relative;
+  }
+  #home { 
+    background:#000; overflow:hidden;
+  }
+  .slide { position:absolute; width:100%; height:100%; background-size:cover; background-position:center; animation: slideAnim 15s infinite; }
+  .slide:nth-child(1){ background-image:url('https://source.unsplash.com/1600x900/?restaurant,food,1'); animation-delay:0s; }
+  .slide:nth-child(2){ background-image:url('https://source.unsplash.com/1600x900/?restaurant,food,2'); animation-delay:5s; }
+  .slide:nth-child(3){ background-image:url('https://source.unsplash.com/1600x900/?restaurant,food,3'); animation-delay:10s; }
+  @keyframes slideAnim {
+    0% {opacity:0;}
+    10% {opacity:1;}
+    33% {opacity:1;}
+    43% {opacity:0;}
+    100% {opacity:0;}
+  }
+  .home-content { position:relative; z-index:2; }
+  #about { background:#f57c00; }
+  #menu { background:#388e3c; }
+  #jobs { background:#1976d2; }
+  #contact { background:#d32f2f; }
+  h1 { font-size:50px; margin-bottom:20px; }
+  p { font-size:20px; max-width:600px; margin:auto; }
+  .btn { display:inline-block; padding:10px 20px; margin-top:20px; background:#fff; color:#222; border-radius:5px; text-decoration:none; transition:0.3s;}
+  .btn:hover { background:#f57c00; color:#fff; }
+
+  footer { background:#111; color:#fff; text-align:center; padding:20px; }
+
+  @media(max-width:768px){
+    header { flex-direction:column; gap:10px; }
+    nav { display:flex; flex-wrap:wrap; justify-content:center; gap:10px;}
+    h1 { font-size:36px; }
+    p { font-size:16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#jobs">Job Tracking</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <input type="text" id="search-bar" placeholder="Search section...">
+</header>
+
+<section id="home">
+  <div class="slide"></div>
+  <div class="slide"></div>
+  <div class="slide"></div>
+  <div class="home-content">
+    <h1>Welcome to HCL Restaurant</h1>
+    <p>Delicious food delivered with love.</p>
+    <a href="#menu" class="btn">Explore Menu</a>
+  </div>
+</section>
+
+<section id="about">
+  <div>
+    <h1>About Us</h1>
+    <p>HCL Restaurant is committed to serving fresh and tasty meals every day.</p>
+    <a href="#contact" class="btn">Contact Us</a>
+  </div>
+</section>
+
+<section id="menu">
+  <div>
+    <h1>Our Menu</h1>
+    <p>Explore our wide variety of dishes, from local favorites to international cuisine.</p>
+  </div>
+</section>
+
+<section id="jobs">
+  <div>
+    <h1>Job Tracking</h1>
+    <p>Apply for jobs and track your application status with us.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div>
+    <h1>Contact Us</h1>
+    <p>Email: info@hclrestaurant.com | Phone: +92 300 0000000</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 HCL Restaurant. All rights reserved.
+</footer>
+
+<script>
+  // Search bar navigation
+  const searchInput = document.getElementById('search-bar');
+  searchInput.addEventListener('keypress', function(e){
+    if(e.key === 'Enter'){
+      const query = searchInput.value.toLowerCase();
+      if(query.includes('home')) window.location.href='#home';
+      else if(query.includes('about')) window.location.href='#about';
+      else if(query.includes('menu')) window.location.href='#menu';
+      else if(query.includes('job')) window.location.href='#jobs';
+      else if(query.includes('contact')) window.location.href='#contact';
+      else alert('Section not found!');
+      searchInput.value = '';
+    }
+  });
+</script>
+
+</body>
+</html>

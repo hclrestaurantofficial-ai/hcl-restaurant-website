@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Application Tracking - HCL Restaurant</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #333;
+}
+
+header {
+  background: #ff3d3d;
+  color: white;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin: 5px 0 0 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+h2 {
+  color: #ff3d3d;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 90%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background: #ff3d3d;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #c1121f;
+}
+
+.result {
+  display: none;
+  margin-top: 25px;
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+  color: #222;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  text-align: left;
+}
+
+.result p {
+  font-size: 1.1rem;
+  margin: 8px 0;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #222;
+  color: white;
+  margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>HCL Restaurant</h1>
+  <p>Job Application Tracking</p>
+</header>
+
+<div class="container">
+  <h2>Check Your Application Status</h2>
+  <input type="email" id="email" placeholder="Enter your email">
+  <br>
+  <button onclick="trackApplication()">Check Status</button>
+
+  <div class="result" id="result">
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Email:</strong> <span id="showEmail"></span></p>
+    <p><strong>Status:</strong> <span id="status"></span></p>
+    <p><strong>Last Update:</strong> <span id="update"></span></p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 HCL Restaurant
+</footer>
+
+<script>
+function trackApplication() {
+  let email = document.getElementById("email").value;
+
+  if(email.trim() === "") {
+    alert("Please enter your email");
+    return;
+  }
+
+  fetch("YOUR_GOOGLE_SCRIPT_URL?email=" + encodeURIComponent(email))
+    .then(res => res.json())
+    .then(data => {
+      if(data.status === "Not Found") {
+        alert("Application not found");
+        return;
+      }
+
+      document.getElementById("name").innerText = data.name;
+      document.getElementById("showEmail").innerText = data.email;
+      document.getElementById("status").innerText = data.status;
+      document.getElementById("update").innerText = data.update;
+
+      document.getElementById("result").style.display = "block";
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Error fetching data. Please try again later.");
+    });
+}
+</script>
+
+</body>
+  </html>

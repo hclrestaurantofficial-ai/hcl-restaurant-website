@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCL Restaurant Job Application</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Roboto',sans-serif;background:linear-gradient(135deg,#ffecd2,#fcb69f);}
+header{background:#ff3d3d;color:white;padding:20px;text-align:center;}
+header h1{margin:0;font-size:2rem;}
+.container{max-width:900px;margin:30px auto;background:white;padding:30px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,0.2);}
+.progress-bar{background:#eee;height:12px;border-radius:6px;margin-bottom:20px;}
+.progress{height:12px;background:#ff3d3d;width:0%;border-radius:6px;}
+.step{display:none;}
+.step.active{display:block;}
+input,select{width:100%;padding:12px;margin:8px 0;border-radius:6px;border:1px solid #ccc;font-size:16px;}
+button{padding:12px 25px;background:#ff3d3d;color:white;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:10px 5px;}
+button:hover{background:#c1121f;}
+label{font-weight:bold;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>HCL Restaurant Job Application</h1>
+</header>
+
+<div class="container">
+<div class="progress-bar"><div class="progress" id="progress"></div></div>
+<form id="jobForm" enctype="multipart/form-data">
+
+<!-- STEP 1: Personal Info -->
+<div class="step active" id="step1">
+<h2>Step 1: Personal Info</h2>
+<label>Full Name *</label><input type="text" name="full_name" required>
+<label>Father Name *</label><input type="text" name="father_name" required>
+<label>Date of Birth *</label><input type="date" name="dob" required>
+<label>Age (18+) *</label><input type="number" name="age" min="18" required>
+<label>Email *</label><input type="email" name="email" required>
+<label>Phone *</label><input type="tel" name="phone" required>
+<label>City</label><input type="text" name="city">
+<label>State/Province</label><input type="text" name="state">
+<label>Postal Code</label><input type="text" name="postal_code">
+<label>Country *</label>
+<select name="country" required>
+<option value="">Select Country</option>
+<option>Philippines</option><option>Vietnam</option><option>Turkey</option><option>France</option>
+<option>Indonesia</option><option>China</option><option>Pakistan</option><option>India</option>
+<option>Italy</option><option>Taiwan</option><option>Spain</option><option>Poland</option>
+<option>Austria</option><option>Germany</option><option>Other</option>
+</select>
+<button type="button" onclick="nextStep()">Next →</button>
+</div>
+
+<!-- STEP 2: Education -->
+<div class="step" id="step2">
+<h2>Step 2: Education</h2>
+<label>Highest Qualification *</label>
+<select name="qualification" required>
+<option value="">Select</option><option>Bachelor</option><option>Master</option><option>High School</option>
+<option>PhD</option><option>Other</option>
+</select>
+<label>Degree Name</label><input type="text" name="degree_name">
+<label>Institute Name</label><input type="text" name="institute">
+<label>Passing Year</label><input type="number" name="passing_year" min="1900" max="2099">
+<label>Field / Subject</label><input type="text" name="field_subject">
+<label>Percentage / Grade</label><input type="text" name="grade">
+<label>Education PDF (optional)</label><input type="file" name="education_file" accept=".pdf">
+<button type="button" onclick="prevStep()">← Previous</button>
+<button type="button" onclick="nextStep()">Next →</button>
+</div>
+
+<!-- STEP 3: Job Position -->
+<div class="step" id="step3">
+<h2>Step 3: Job Position</h2>
+<label>Position Applied *</label>
+<select name="position" required>
+<option value="">Select</option>
+<option>Chief</option><option>Cleaner</option><option>Crew Member</option><option>Dish Washer</option>
+<option>Assistant Manager</option><option>Supervisor</option><option>Office Worker</option><option>Waiter</option>
+<option>Assistant CEO</option><option>Master Chief</option><option>Food Management</option>
+<option>Computer Operator</option><option>Reception</option><option>Kitchen Helper</option><option>Shift Head</option>
+</select>
+<label>Shift *</label>
+<select name="shift" required>
+<option value="">Select</option><option>Morning</option><option>Night</option>
+</select>
+<button type="button" onclick="prevStep()">← Previous</button>
+<button type="button" onclick="nextStep()">Next →</button>
+</div>
+
+<!-- STEP 4: Work Experience -->
+<div class="step" id="step4">
+<h2>Step 4: Work Experience</h2>
+<label>Company Name</label><input type="text" name="company_name">
+<label>Job Role</label><input type="text" name="job_role">
+<label>Experience Years</label><input type="number" name="experience_years" min="0">
+<label>Experience Months</label><input type="number" name="experience_months" min="0" max="11">
+<label>No Experience</label><select name="no_experience"><option value="No">No</option><option value="Yes">Yes</option></select>
+<button type="button" onclick="prevStep()">← Previous</button>
+<button type="button" onclick="nextStep()">Next →</button>
+</div>
+
+<!-- STEP 5: Passport -->
+<div class="step" id="step5">
+<h2>Step 5: Passport Details</h2>
+<label>Passport Number</label><input type="text" name="passport_number">
+<label>Date of Issue</label><input type="date" name="passport_issue">
+<label>Date of Expiry</label><input type="date" name="passport_expiry">
+<label>Passport PDF (optional)</label><input type="file" name="passport_file" accept=".pdf,.jpg,.png">
+<label>Passport Not Available</label><select name="no_passport"><option value="No">No</option><option value="Yes">Yes</option></select>
+<button type="button" onclick="prevStep()">← Previous</button>
+<button type="button" onclick="nextStep()">Next →</button>
+</div>
+
+<!-- STEP 6: CV & Photo -->
+<div class="step" id="step6">
+<h2>Step 6: Upload CV & Photo</h2>
+<label>Upload CV (PDF) *</label><input type="file" name="cv_file" accept=".pdf" required>
+<label>Upload Photo *</label><input type="file" name="photo_file" accept=".jpg,.png" required>
+<button type="button" onclick="prevStep()">← Previous</button>
+<button type="button" onclick="nextStep()">Next →</button>
+</div>
+
+<!-- STEP 7: Review & Confirm -->
+<div class="step" id="step7">
+<h2>Step 7: Review & Confirm</h2>
+<p>Make sure all info is correct before submission.</p>
+<button type="button" onclick="prevStep()">← Previous</button>
+<button type="button" onclick="nextStep()">Go to Submit →</button>
+</div>
+
+<!-- STEP 8: Submission -->
+<div class="step" id="step8">
+<h2>Step 8: Submit Your Application</h2>
+<p>Click below to submit your job application.</p>
+<button type="button" onclick="submitForm()">✅ Submit Application</button>
+<p id="submitStatus"></p>
+</div>
+
+</form>
+</div>
+
+<script>
+let currentStep = 1;
+const totalSteps = 8;
+
+function updateProgress(){
+document.getElementById('progress').style.width = ((currentStep-1)/(totalSteps-1))*100 + '%';
+}
+
+function showStep(n){
+document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+document.getElementById('step'+n).classList.add('active');
+updateProgress();
+}
+
+function nextStep(){
+const stepDiv = document.getElementById('step'+currentStep);
+const validInputs = [...stepDiv.querySelectorAll('input,select')].every(el => el.checkValidity());
+if(validInputs){
+if(currentStep === totalSteps - 1){
+currentStep++;
+showStep(currentStep); // Step 8 me le jao
+}else{
+currentStep++;
+showStep(currentStep);
+}
+}else{
+stepDiv.querySelector('form')?.reportValidity();
+[...stepDiv.querySelectorAll('input,select')].forEach(i => i.reportValidity?.());
+}
+}
+
+function prevStep(){
+if(currentStep > 1){
+currentStep--;
+showStep(currentStep);
+}
+}
+
+function submitForm(){
+showStep(8);
+const status = document.getElementById('submitStatus');
+status.innerText = "Submitting your form...";
+
+const form = document.getElementById('jobForm');
+const formData = new FormData(form);
+
+let appsScriptDone = false;
+let formspreeDone = false;
+
+// 1️⃣ Google Apps Script
+fetch("https://script.google.com/macros/s/AKfycbzi7HKgj4OBBPj1NXztmVOuaBLm9UYLAWDw8HRyM8TabW0yU2VY1Adr5GRCvMvznXFj/exec", {
+method:'POST', body:formData
+})
+.then(res => res.text())
+.then(resp => { appsScriptDone = true; if(formspreeDone) showSuccess(); })
+.catch(err => { console.error(err); status.innerText = "Error saving to Sheet/Drive."; });
+
+// 2️⃣ Formspree (text only)
+const textData = new FormData();
+formData.forEach((v,k)=>{ if(!(v instanceof File)) textData.append(k,v); });
+
+fetch("https://formspree.io/f/xwvrpbza", {method:"POST",body:textData,headers:{"Accept":"application/json"}})
+.then(res=>res.json())
+.then(data=>{ formspreeDone=true; if(appsScriptDone) showSuccess(); })
+.catch(err=>{ console.error(err); status.innerText += "\nFormspree network error."; });
+
+function showSuccess(){
+status.innerHTML = "<span style='color:green;font-weight:bold;'>✅ Your job application has been submitted successfully!</span><br>Thank you for applying.";
+}
+}
+
+showStep(currentStep);
+updateProgress();
+</script>
+
+</body>
+                                                                                    </html>

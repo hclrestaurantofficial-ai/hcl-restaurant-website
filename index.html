@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demo Bank</title>
+<style>
+body{font-family:Arial;background:#0f172a;color:white;text-align:center}
+.box{width:320px;margin:60px auto;background:#1e293b;padding:20px;border-radius:10px}
+input,select,button{width:90%;padding:10px;margin:8px;border-radius:5px;border:none}
+button{background:#22c55e;color:white;cursor:pointer}
+.hidden{display:none}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login" class="box">
+<h2>Demo Bank Login</h2>
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dash" class="box hidden">
+<h2>Welcome <span id="uname"></span></h2>
+<h3>Balance: $<span id="bal"></span></h3>
+
+<button onclick="show('transfer')">Transfer Money</button>
+</div>
+
+<!-- TRANSFER TYPE -->
+<div id="transfer" class="box hidden">
+<h2>Select Transfer Type</h2>
+<button onclick="setType('Local Bank')">Local Bank</button>
+<button onclick="setType('International')">International</button>
+<button onclick="setType('Wallet')">Wallet</button>
+</div>
+
+<!-- DETAILS -->
+<div id="form" class="box hidden">
+<h2 id="formTitle"></h2>
+
+<div id="extra"></div>
+
+<input id="receiver" placeholder="Receiver Name">
+<input id="amount" placeholder="Amount">
+
+<button onclick="review()">Review</button>
+</div>
+
+<!-- REVIEW -->
+<div id="review" class="box hidden">
+<h2>Review Transfer</h2>
+
+<p>Type: <span id="rtype"></span></p>
+<p>Receiver: <span id="rrec"></span></p>
+<p>Amount: $<span id="ramt"></span></p>
+
+<button onclick="confirmTransfer()">Confirm</button>
+</div>
+
+<!-- SUCCESS -->
+<div id="success" class="box hidden">
+<h2>✅ Transfer Successful</h2>
+
+<p>Reference: <span id="ref"></span></p>
+<p>New Balance: $<span id="nbal"></span></p>
+
+<button onclick="reset()">Back</button>
+</div>
+
+<script>
+
+let balance = 83450;
+let type = "";
+
+function login(){
+  let u = document.getElementById("user").value;
+  localStorage.setItem("user",u);
+  show("dash");
+  document.getElementById("uname").innerText = u;
+  document.getElementById("bal").innerText = balance;
+}
+
+function show(page){
+  document.querySelectorAll(".box").forEach(b=>b.classList.add("hidden"));
+  document.getElementById(page).classList.remove("hidden");
+}
+
+function setType(t){
+  type = t;
+  show("form");
+
+  document.getElementById("formTitle").innerText = t + " Transfer";
+
+  let extra = "";
+
+  if(t=="Local Bank"){
+    extra = `
+      <select>
+        <option>Bank of China (HK)</option>
+        <option>Standard Chartered</option>
+        <option>DBS Bank</option>
+      </select>
+    `;
+  }
+
+  if(t=="International"){
+    extra = `
+      <select>
+        <option>Vietnam</option>
+        <option>Philippines</option>
+        <option>Indonesia</option>
+      </select>
+    `;
+  }
+
+  if(t=="Wallet"){
+    extra = `
+      <select>
+        <option>PayPal</option>
+        <option>Alipay</option>
+        <option>MoMo</option>
+      </select>
+    `;
+  }
+
+  document.getElementById("extra").innerHTML = extra;
+}
+
+function review(){
+  document.getElementById("rtype").innerText = type;
+  document.getElementById("rrec").innerText = document.getElementById("receiver").value;
+  document.getElementById("ramt").innerText = document.getElementById("amount").value;
+
+  show("review");
+}
+
+function confirmTransfer(){
+  let amt = parseFloat(document.getElementById("amount").value);
+
+  let fee = amt * 0.02;
+  let total = amt + fee;
+
+  if(balance >= total){
+    balance -= total;
+
+    document.getElementById("ref").innerText = "REF-"+Math.floor(Math.random()*999999);
+    document.getElementById("nbal").innerText = balance;
+
+    show("success");
+  } else {
+    alert("Insufficient Balance");
+  }
+}
+
+function reset(){
+  show("dash");
+  document.getElementById("bal").innerText = balance;
+}
+
+</script>
+
+</body>
+</html>

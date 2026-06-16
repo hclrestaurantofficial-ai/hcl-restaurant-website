@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Union Bank</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🏦 Global Union Bank</h1>
+        <p>Welcome Back, William</p>
+    </div>
+
+    <div class="balance-card">
+        <h3>Available Balance</h3>
+        <h1>$83,450.00 USD</h1>
+        <p>Account Number: GUB-2026-884521</p>
+    </div>
+
+    <!-- STEP 1 -->
+    <div id="step1" class="step active">
+
+        <h2>Transfer Type</h2>
+
+        <button onclick="selectTransfer('Local Bank')">
+            Local Bank
+        </button>
+
+        <button onclick="selectTransfer('International Bank')">
+            International Bank
+        </button>
+
+        <button onclick="selectTransfer('Other Wallet')">
+            Other Wallet
+        </button>
+
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="step2" class="step">
+
+        <h2>Select Bank / Wallet</h2>
+
+        <select id="bankName"></select>
+
+        <br><br>
+
+        <input
+            type="text"
+            id="customBank"
+            placeholder="Other Bank / Wallet Name"
+            style="display:none;"
+        >
+
+        <br><br>
+
+        <button onclick="goToDetails()">
+            Continue
+        </button>
+
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="step3" class="step">
+
+        <h2>Recipient Details</h2>
+
+        <input type="text" id="senderName" value="William">
+
+        <input type="text" id="senderAccount"
+        value="GUB-2026-884521">
+
+        <input type="text" id="receiverName"
+        placeholder="Receiver Name">
+
+        <input type="text" id="receiverAccount"
+        placeholder="Receiver Account Number">
+
+        <input type="number" id="amount"
+        placeholder="Amount">
+
+        <input type="text" id="country"
+        placeholder="Country">
+
+        <select id="currency">
+            <option>USD</option>
+            <option>EUR</option>
+            <option>AUD</option>
+        </select>
+
+        <textarea id="purpose"
+        placeholder="Purpose"></textarea>
+
+        <br>
+
+        <button onclick="reviewTransfer()">
+            Review Transfer
+        </button>
+
+    </div>
+
+    <!-- STEP 4 -->
+    <div id="step4" class="step">
+
+        <h2>Review Transfer</h2>
+
+        <div id="reviewBox"></div>
+
+        <button onclick="startTransfer()">
+            Send Money
+        </button>
+
+    </div>
+
+    <!-- STEP 5 -->
+    <div id="step5" class="step">
+
+        <h2>Processing Transfer...</h2>
+
+        <div class="loader"></div>
+
+        <h3 id="countdown">15</h3>
+
+    </div>
+
+    <!-- STEP 6 -->
+    <div id="step6" class="step">
+
+        <h2>✅ Transaction Successful</h2>
+
+        <div id="receipt"></div>
+
+        <button onclick="window.print()">
+            Download Receipt
+        </button>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+  </html>
